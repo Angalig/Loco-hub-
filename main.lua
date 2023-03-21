@@ -1,4 +1,20 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
+local Window = OrionLib:MakeWindow({Name = "LocoHub Key System", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddLabel("Key == not inputed!")
+Tab:AddTextbox({
+	Name = "Insert Key",
+	Default = "Insert the key here!",
+	TextDisappear = false,
+	Callback = function(Value)
+    if Value == "System_cr" or "EmirPro" or "WeaKy" or "Obf8772hjg4j32gjhGHJt873tu" then
+if game.PlaceId == 2788229376 or 8973652897 then
 local user = game.Players.LocalPlayer.UserId
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local Animate = game.Players.LocalPlayer.Character.Animate
@@ -8,11 +24,50 @@ local GUI = Mercury:Create {
   Theme = Mercury.Themes.Dark,
   Link = "https://locohub.netlify.app"
 }
-
 local Main = GUI:Tab {
   Name = "Main",
   Icon = "rbxassetid://8569322835"
 }
+		
+Main:Button{
+Name = "Da mimic",
+Description = nil,
+Callback = function()
+--[[
+Controls:
+X -- Go invis
+B -- Jumpscare
+H -- Jumpscare Mouse
+C -- Play humming sound
+V -- Play footsteps sound
+Z -- Play Scary Music
+T -- Walk Thingy ( It drops FPS, don't use until FIX )
+Q -- Scary Laugh
+
+/e mimic -- Makes your legs dissapear which gives you a floating look and gives you a invisible mask
+
+You must execute while in forcefield (spawn bubble) for GodV3 to work
+
+Must have 60% (or so) weight for titan to work
+If you got 0 weight its gonna make you SKINNY and if you got max weight it gonna make you MASSIVE
+
+You must own BOOMBOX in DH for it to work, some people confimed it does work with boombox but no audios (ofc)
+]]
+
+
+getgenv().JumpscareSound = {
+    "8280196339", -- put audios in like this for a random jumpscare sound 
+    "7588947168",
+	"7713890963"
+} 
+
+getgenv().Settings = {
+    ['HoverAnims'] = 'Off', --[On / Off] 
+    ['DaMimicSpeed'] = '100', -- MUST BE A NUMBER
+}
+
+loadstring(game:HttpGet("https://icxy.xyz/NovaGui/NovaMimic", true))()
+end
 Main:Button {
   Name = ".gg/synx antilock {V}",
   Description = nil,
@@ -379,7 +434,6 @@ loadscreen33:AddToggle(
         locksectionenabled = Boolean
     end
 )
- --Memelouse#3150
 
 local SettingsTab4 = loadscreen2:CreateSector("Discord/website", "right")
 
@@ -11579,5 +11633,4786 @@ Main:Button{
   Description = nil,
   Callback = function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceYes/Lua/Main/DaHood.Lua'))()
+
   end
+} elseif game.PlaceId == 6872265039 then
+
+local GUI = Mercury:Create{
+    Name = "WarHub",
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Dark,
+    Link = "https://github.com/deeeity/mercury-lib"
 }
+
+local Tab = GUI:Tab{
+	Name = "Main",
+	Icon = "rbxassetid://8569322835"
+}
+
+Tab:Button{
+	Name = "Vxpe",
+	Description = nil,
+	Callback = function() 
+repeat task.wait() until game:IsLoaded()
+local GuiLibrary
+local baseDirectory = (shared.VapePrivate and "vapeprivate/" or "vape/")
+local vapeInjected = true
+local oldRainbow = false
+local errorPopupShown = false
+local redownloadedAssets = false
+local profilesLoaded = false
+local teleportedServers = false
+local gameCamera = workspace.CurrentCamera
+local textService = game:GetService("TextService")
+local playersService = game:GetService("Players")
+local isfile = isfile or function(file)
+	local suc, res = pcall(function() return readfile(file) end)
+	return suc and res ~= nil
+end
+local setidentity = syn and syn.set_thread_identity or set_thread_identity or setidentity or setthreadidentity or function() end
+local getidentity = syn and syn.get_thread_identity or get_thread_identity or getidentity or getthreadidentity or function() return 0 end
+local getcustomasset = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
+local queueonteleport = syn and syn.queue_on_teleport or queue_on_teleport or function() end
+local delfile = delfile or function(file) writefile(file, "") end
+
+local function displayErrorPopup(text, funclist)
+	local oldidentity = getidentity()
+	setidentity(8)
+	local ErrorPrompt = getrenv().require(game:GetService("CoreGui").RobloxGui.Modules.ErrorPrompt)
+	local prompt = ErrorPrompt.new("Default")
+	prompt._hideErrorCode = true
+	local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
+	prompt:setErrorTitle("Vape")
+	local funcs = {}
+	local num = 0
+	for i,v in pairs(funclist) do 
+		num = num + 1
+		table.insert(funcs, {
+			Text = i,
+			Callback = function() 
+				prompt:_close() 
+				v()
+			end,
+			Primary = num == #funclist
+		})
+	end
+	prompt:updateButtons(funcs or {{
+		Text = "OK",
+		Callback = function() 
+			prompt:_close() 
+		end,
+		Primary = true
+	}}, 'Default')
+	prompt:setParent(gui)
+	prompt:_open(text)
+	setidentity(oldidentity)
+end
+
+local function vapeGithubRequest(scripturl)
+	if not isfile("vape/"..scripturl) then
+		local suc, res
+		task.delay(15, function()
+			if not res and not errorPopupShown then 
+				errorPopupShown = true
+				displayErrorPopup("The connection to github is taking a while, Please be patient.")
+			end
+		end)
+		suc, res = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/"..scripturl, true) end)
+		if not suc or res == "404: Not Found" then
+			displayErrorPopup("Failed to connect to github : vape/"..scripturl.." : "..res)
+			error(res)
+		end
+		if scripturl:find(".lua") then res = "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..res end
+		writefile("vape/"..scripturl, res)
+	end
+	return readfile("vape/"..scripturl)
+end
+
+local function downloadVapeAsset(path)
+	if not isfile(path) then
+		task.spawn(function()
+			local textlabel = Instance.new("TextLabel")
+			textlabel.Size = UDim2.new(1, 0, 0, 36)
+			textlabel.Text = "Downloading "..path
+			textlabel.BackgroundTransparency = 1
+			textlabel.TextStrokeTransparency = 0
+			textlabel.TextSize = 30
+			textlabel.Font = Enum.Font.SourceSans
+			textlabel.TextColor3 = Color3.new(1, 1, 1)
+			textlabel.Position = UDim2.new(0, 0, 0, -36)
+			textlabel.Parent = GuiLibrary.MainGui
+			repeat task.wait() until isfile(path)
+			textlabel:Destroy()
+		end)
+		local suc, req = pcall(function() return vapeGithubRequest(path:gsub("vape/assets", "assets")) end)
+        if suc and req then
+		    writefile(path, req)
+        else
+            return ""
+        end
+	end
+	return getcustomasset(path) 
+end
+
+assert(not shared.VapeExecuted, "Vape Already Injected")
+shared.VapeExecuted = true
+
+for i,v in pairs({baseDirectory:gsub("/", ""), "vape", "vape/Libraries", "vape/CustomModules", "vape/Profiles", baseDirectory.."Profiles", "vape/assets"}) do 
+	if not isfolder(v) then makefolder(v) end
+end
+task.spawn(function()
+	local success, assetver = pcall(function() return vapeGithubRequest("assetsversion.txt") end)
+	if not isfile("vape/assetsversion.txt") then writefile("vape/assetsversion.txt", "0") end
+	if success and assetver > readfile("vape/assetsversion.txt") then
+		redownloadedAssets = true
+		if isfolder("vape/assets") and not shared.VapeDeveloper then
+			if delfolder then
+				delfolder("vape/assets")
+				makefolder("vape/assets")
+			end
+		end
+		writefile("vape/assetsversion.txt", assetver)
+	end
+end)
+if not isfile("vape/CustomModules/cachechecked.txt") then
+	local isNotCached = false
+	for i,v in pairs({"vape/Universal.lua", "vape/MainScript.lua", "vape/GuiLibrary.lua"}) do 
+		if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+			isNotCached = true
+		end 
+	end
+	if isfolder("vape/CustomModules") then 
+		for i,v in pairs(listfiles("vape/CustomModules")) do 
+			if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+				isNotCached = true
+			end 
+		end
+	end
+	if isNotCached and not shared.VapeDeveloper then
+		displayErrorPopup("Vape has detected uncached files, If you have CustomModules click no, else click yes.", {No = function() end, Yes = function()
+			for i,v in pairs({"vape/Universal.lua", "vape/MainScript.lua", "vape/GuiLibrary.lua"}) do 
+				if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+					delfile(v)
+				end 
+			end
+			for i,v in pairs(listfiles("vape/CustomModules")) do 
+				if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+					local last = v:split('\\')
+					last = last[#last]
+					local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/CustomModules/"..last) end)
+					if suc and publicrepo and publicrepo ~= "404: Not Found" then
+						writefile("vape/CustomModules/"..last, "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..publicrepo)
+					end
+				end 
+			end
+		end})
+	end
+	writefile("vape/CustomModules/cachechecked.txt", "verified")
+end
+
+GuiLibrary = loadstring(vapeGithubRequest("GuiLibrary.lua"))()
+shared.GuiLibrary = GuiLibrary
+
+local saveSettingsLoop = coroutine.create(function()
+	repeat
+		GuiLibrary.SaveSettings()
+        task.wait(10)
+	until not vapeInjected or not GuiLibrary
+end)
+
+task.spawn(function()
+	local image = Instance.new("ImageLabel")
+	image.Image = downloadVapeAsset("vape/assets/CombatIcon.png")
+	image.Position = UDim2.new()
+	image.BackgroundTransparency = 1
+	image.Size = UDim2.fromOffset(100, 100)
+	image.ImageTransparency = 0.999
+	image.Parent = GuiLibrary.MainGui
+    image:GetPropertyChangedSignal("IsLoaded"):Connect(function()
+        image:Destroy()
+        image = nil
+    end)
+	task.spawn(function()
+		task.wait(15)
+		if image and image.ContentImageSize == Vector2.zero and (not errorPopupShown) and (not redownloadedAssets) and (not isfile("vape/assets/check3.txt")) then 
+            errorPopupShown = true
+            displayErrorPopup("Assets failed to load, Try another executor (executor : "..(identifyexecutor and identifyexecutor() or "Unknown")..")", {OK = function()
+                writefile("vape/assets/check3.txt", "")
+            end})
+        end
+	end)
+end)
+
+local GUI = GuiLibrary.CreateMainWindow()
+local Combat = GuiLibrary.CreateWindow({
+	Name = "Combat", 
+	Icon = "vape/assets/CombatIcon.png", 
+	IconSize = 15
+})
+local Blatant = GuiLibrary.CreateWindow({
+	Name = "Blatant", 
+	Icon = "vape/assets/BlatantIcon.png", 
+	IconSize = 16
+})
+local Render = GuiLibrary.CreateWindow({
+	Name = "Render", 
+	Icon = "vape/assets/RenderIcon.png", 
+	IconSize = 17
+})
+local Utility = GuiLibrary.CreateWindow({
+	Name = "Utility", 
+	Icon = "vape/assets/UtilityIcon.png", 
+	IconSize = 17
+})
+local World = GuiLibrary.CreateWindow({
+	Name = "World", 
+	Icon = "vape/assets/WorldIcon.png", 
+	IconSize = 16
+})
+local Friends = GuiLibrary.CreateWindow2({
+	Name = "Friends", 
+	Icon = "vape/assets/FriendsIcon.png", 
+	IconSize = 17
+})
+local Targets = GuiLibrary.CreateWindow2({
+	Name = "Targets", 
+	Icon = "vape/assets/FriendsIcon.png", 
+	IconSize = 17
+})
+local Profiles = GuiLibrary.CreateWindow2({
+	Name = "Profiles", 
+	Icon = "vape/assets/ProfilesIcon.png", 
+	IconSize = 19
+})
+GUI.CreateDivider()
+GUI.CreateButton({
+	Name = "Combat", 
+	Function = function(callback) Combat.SetVisible(callback) end, 
+	Icon = "vape/assets/CombatIcon.png", 
+	IconSize = 15
+})
+GUI.CreateButton({
+	Name = "Blatant", 
+	Function = function(callback) Blatant.SetVisible(callback) end, 
+	Icon = "vape/assets/BlatantIcon.png", 
+	IconSize = 16
+})
+GUI.CreateButton({
+	Name = "Render", 
+	Function = function(callback) Render.SetVisible(callback) end, 
+	Icon = "vape/assets/RenderIcon.png", 
+	IconSize = 17
+})
+GUI.CreateButton({
+	Name = "Utility", 
+	Function = function(callback) Utility.SetVisible(callback) end, 
+	Icon = "vape/assets/UtilityIcon.png", 
+	IconSize = 17
+})
+GUI.CreateButton({
+	Name = "World", 
+	Function = function(callback) World.SetVisible(callback) end, 
+	Icon = "vape/assets/WorldIcon.png", 
+	IconSize = 16
+})
+GUI.CreateDivider("MISC")
+GUI.CreateButton({
+	Name = "Friends", 
+	Function = function(callback) Friends.SetVisible(callback) end, 
+})
+GUI.CreateButton({
+	Name = "Targets", 
+	Function = function(callback) Targets.SetVisible(callback) end, 
+})
+GUI.CreateButton({
+	Name = "Profiles", 
+	Function = function(callback) Profiles.SetVisible(callback) end, 
+})
+
+local FriendsTextListTable = {
+	Name = "FriendsList", 
+	TempText = "Username [Alias]", 
+	Color = Color3.fromRGB(5, 133, 104)
+}
+local FriendsTextList = Friends.CreateCircleTextList(FriendsTextListTable)
+FriendsTextList.FriendRefresh = Instance.new("BindableEvent")
+FriendsTextList.FriendColorRefresh = Instance.new("BindableEvent")
+local TargetsTextList = Targets.CreateCircleTextList({
+	Name = "TargetsList", 
+	TempText = "Username [Alias]", 
+	Color = Color3.fromRGB(5, 133, 104)
+})
+local oldFriendRefresh = FriendsTextList.RefreshValues
+FriendsTextList.RefreshValues = function(...)
+	FriendsTextList.FriendRefresh:Fire()
+	return oldFriendRefresh(...)
+end
+local oldTargetRefresh = TargetsTextList.RefreshValues
+TargetsTextList.RefreshValues = function(...)
+	FriendsTextList.FriendRefresh:Fire()
+	return oldTargetRefresh(...)
+end
+Friends.CreateToggle({
+	Name = "Use Friends",
+	Function = function(callback) 
+		FriendsTextList.FriendRefresh:Fire()
+	end,
+	Default = true
+})
+Friends.CreateToggle({
+	Name = "Use Alias",
+	Function = function(callback) end,
+	Default = true,
+})
+Friends.CreateToggle({
+	Name = "Spoof alias",
+	Function = function(callback) end,
+})
+local friendRecolorToggle = Friends.CreateToggle({
+	Name = "Recolor visuals",
+	Function = function(callback) FriendsTextList.FriendColorRefresh:Fire() end,
+	Default = true
+})
+local friendWindowFrame
+Friends.CreateColorSlider({
+	Name = "Friends Color", 
+	Function = function(h, s, v) 
+		local cachedColor = Color3.fromHSV(h, s, v)
+		local addCircle = FriendsTextList.Object:FindFirstChild("AddButton", true)
+		if addCircle then 
+			addCircle.ImageColor3 = cachedColor
+		end
+		friendWindowFrame = friendWindowFrame or FriendsTextList.ScrollingObject and FriendsTextList.ScrollingObject:FindFirstChild("ScrollingFrame")
+		if friendWindowFrame then 
+			for i,v in pairs(friendWindowFrame:GetChildren()) do 
+				local friendCircle = v:FindFirstChild("FriendCircle")
+				local friendText = v:FindFirstChild("ItemText")
+				if friendCircle and friendText then 
+					friendCircle.BackgroundColor3 = friendText.TextColor3 == Color3.fromRGB(160, 160, 160) and cachedColor or friendCircle.BackgroundColor3
+				end
+			end
+		end
+		FriendsTextListTable.Color = cachedColor
+		if friendRecolorToggle.Enabled then
+			FriendsTextList.FriendColorRefresh:Fire()
+		end
+	end
+})
+local ProfilesTextList = {RefreshValues = function() end}
+ProfilesTextList = Profiles.CreateTextList({
+	Name = "ProfilesList",
+	TempText = "Type name", 
+	NoSave = true,
+	AddFunction = function(profileName)
+		GuiLibrary.Profiles[profileName] = {Keybind = "", Selected = false}
+		local profiles = {}
+		for i,v in pairs(GuiLibrary.Profiles) do 
+			table.insert(profiles, i)
+		end
+		table.sort(profiles, function(a, b) return b == "default" and true or a:lower() < b:lower() end)
+		ProfilesTextList.RefreshValues(profiles)
+	end, 
+	RemoveFunction = function(profileIndex, profileName) 
+		if profileName ~= "default" and profileName ~= GuiLibrary.CurrentProfile then 
+			pcall(function() delfile(baseDirectory.."Profiles/"..profileName..(shared.CustomSaveVape or game.PlaceId)..".vapeprofile.txt") end)
+			GuiLibrary.Profiles[profileName] = nil
+		else
+			table.insert(ProfilesTextList.ObjectList, profileName)
+			ProfilesTextList.RefreshValues(ProfilesTextList.ObjectList)
+		end
+	end, 
+	CustomFunction = function(profileObject, profileName) 
+		if GuiLibrary.Profiles[profileName] == nil then
+			GuiLibrary.Profiles[profileName] = {Keybind = ""}
+		end
+		profileObject.MouseButton1Click:Connect(function()
+			GuiLibrary.SwitchProfile(profileName)
+		end)
+		local newsize = UDim2.new(0, 20, 0, 21)
+		local bindbkg = Instance.new("TextButton")
+		bindbkg.Text = ""
+		bindbkg.AutoButtonColor = false
+		bindbkg.Size = UDim2.new(0, 20, 0, 21)
+		bindbkg.Position = UDim2.new(1, -50, 0, 6)
+		bindbkg.BorderSizePixel = 0
+		bindbkg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		bindbkg.BackgroundTransparency = 0.95
+		bindbkg.Visible = GuiLibrary.Profiles[profileName].Keybind ~= ""
+		bindbkg.Parent = profileObject
+		local bindimg = Instance.new("ImageLabel")
+		bindimg.Image = downloadVapeAsset("vape/assets/KeybindIcon.png")
+		bindimg.BackgroundTransparency = 1
+		bindimg.Size = UDim2.new(0, 12, 0, 12)
+		bindimg.Position = UDim2.new(0, 4, 0, 5)
+		bindimg.ImageTransparency = 0.2
+		bindimg.Active = false
+		bindimg.Visible = (GuiLibrary.Profiles[profileName].Keybind == "")
+		bindimg.Parent = bindbkg
+		local bindtext = Instance.new("TextLabel")
+		bindtext.Active = false
+		bindtext.BackgroundTransparency = 1
+		bindtext.TextSize = 16
+		bindtext.Parent = bindbkg
+		bindtext.Font = Enum.Font.SourceSans
+		bindtext.Size = UDim2.new(1, 0, 1, 0)
+		bindtext.TextColor3 = Color3.fromRGB(85, 85, 85)
+		bindtext.Visible = (GuiLibrary.Profiles[profileName].Keybind ~= "")
+		local bindtext2 = Instance.new("TextLabel")
+		bindtext2.Text = "PRESS A KEY TO BIND"
+		bindtext2.Size = UDim2.new(0, 150, 0, 33)
+		bindtext2.Font = Enum.Font.SourceSans
+		bindtext2.TextSize = 17
+		bindtext2.TextColor3 = Color3.fromRGB(201, 201, 201)
+		bindtext2.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
+		bindtext2.BorderSizePixel = 0
+		bindtext2.Visible = false
+		bindtext2.Parent = profileObject
+		local bindround = Instance.new("UICorner")
+		bindround.CornerRadius = UDim.new(0, 4)
+		bindround.Parent = bindbkg
+		bindbkg.MouseButton1Click:Connect(function()
+			if not GuiLibrary.KeybindCaptured then
+				GuiLibrary.KeybindCaptured = true
+				task.spawn(function()
+					bindtext2.Visible = true
+					repeat task.wait() until GuiLibrary.PressedKeybindKey ~= ""
+					local key = (GuiLibrary.PressedKeybindKey == GuiLibrary.Profiles[profileName].Keybind and "" or GuiLibrary.PressedKeybindKey)
+					if key == "" then
+						GuiLibrary.Profiles[profileName].Keybind = key
+						newsize = UDim2.new(0, 20, 0, 21)
+						bindbkg.Size = newsize
+						bindbkg.Visible = true
+						bindbkg.Position = UDim2.new(1, -(30 + newsize.X.Offset), 0, 6)
+						bindimg.Visible = true
+						bindtext.Visible = false
+						bindtext.Text = key
+					else
+						local textsize = textService:GetTextSize(key, 16, bindtext.Font, Vector2.new(99999, 99999))
+						newsize = UDim2.new(0, 13 + textsize.X, 0, 21)
+						GuiLibrary.Profiles[profileName].Keybind = key
+						bindbkg.Visible = true
+						bindbkg.Size = newsize
+						bindbkg.Position = UDim2.new(1, -(30 + newsize.X.Offset), 0, 6)
+						bindimg.Visible = false
+						bindtext.Visible = true
+						bindtext.Text = key
+					end
+					GuiLibrary.PressedKeybindKey = ""
+					GuiLibrary.KeybindCaptured = false
+					bindtext2.Visible = false
+				end)
+			end
+		end)
+		bindbkg.MouseEnter:Connect(function() 
+			bindimg.Image = downloadVapeAsset("vape/assets/PencilIcon.png") 
+			bindimg.Visible = true
+			bindtext.Visible = false
+			bindbkg.Size = UDim2.new(0, 20, 0, 21)
+			bindbkg.Position = UDim2.new(1, -50, 0, 6)
+		end)
+		bindbkg.MouseLeave:Connect(function() 
+			bindimg.Image = downloadVapeAsset("vape/assets/KeybindIcon.png")
+			if GuiLibrary.Profiles[profileName].Keybind ~= "" then
+				bindimg.Visible = false
+				bindtext.Visible = true
+				bindbkg.Size = newsize
+				bindbkg.Position = UDim2.new(1, -(30 + newsize.X.Offset), 0, 6)
+			end
+		end)
+		profileObject.MouseEnter:Connect(function()
+			bindbkg.Visible = true
+		end)
+		profileObject.MouseLeave:Connect(function()
+			bindbkg.Visible = GuiLibrary.Profiles[profileName] and GuiLibrary.Profiles[profileName].Keybind ~= ""
+		end)
+		if GuiLibrary.Profiles[profileName].Keybind ~= "" then
+			bindtext.Text = GuiLibrary.Profiles[profileName].Keybind
+			local textsize = textService:GetTextSize(GuiLibrary.Profiles[profileName].Keybind, 16, bindtext.Font, Vector2.new(99999, 99999))
+			newsize = UDim2.new(0, 13 + textsize.X, 0, 21)
+			bindbkg.Size = newsize
+			bindbkg.Position = UDim2.new(1, -(30 + newsize.X.Offset), 0, 6)
+		end
+		if profileName == GuiLibrary.CurrentProfile then
+			profileObject.BackgroundColor3 = Color3.fromHSV(GuiLibrary.ObjectsThatCanBeSaved["Gui ColorSliderColor"].Api.Hue, GuiLibrary.ObjectsThatCanBeSaved["Gui ColorSliderColor"].Api.Sat, GuiLibrary.ObjectsThatCanBeSaved["Gui ColorSliderColor"].Api.Value)
+			profileObject.ImageButton.BackgroundColor3 = Color3.fromHSV(GuiLibrary.ObjectsThatCanBeSaved["Gui ColorSliderColor"].Api.Hue, GuiLibrary.ObjectsThatCanBeSaved["Gui ColorSliderColor"].Api.Sat, GuiLibrary.ObjectsThatCanBeSaved["Gui ColorSliderColor"].Api.Value)
+			profileObject.ItemText.TextColor3 = Color3.new(1, 1, 1)
+			profileObject.ItemText.TextStrokeTransparency = 0.75
+			bindbkg.BackgroundTransparency = 0.9
+			bindtext.TextColor3 = Color3.fromRGB(214, 214, 214)
+		end
+	end
+})
+
+local OnlineProfilesButton = Instance.new("TextButton")
+OnlineProfilesButton.Name = "OnlineProfilesButton"
+OnlineProfilesButton.LayoutOrder = 1
+OnlineProfilesButton.AutoButtonColor = false
+OnlineProfilesButton.Size = UDim2.new(0, 45, 0, 29)
+OnlineProfilesButton.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
+OnlineProfilesButton.Active = false
+OnlineProfilesButton.Text = ""
+OnlineProfilesButton.ZIndex = 1
+OnlineProfilesButton.Font = Enum.Font.SourceSans
+OnlineProfilesButton.TextXAlignment = Enum.TextXAlignment.Left
+OnlineProfilesButton.Position = UDim2.new(0, 166, 0, 6)
+OnlineProfilesButton.Parent = ProfilesTextList.Object
+local OnlineProfilesButtonBKG = Instance.new("UIStroke")
+OnlineProfilesButtonBKG.Color = Color3.fromRGB(38, 37, 38)
+OnlineProfilesButtonBKG.Thickness = 1
+OnlineProfilesButtonBKG.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+OnlineProfilesButtonBKG.Parent = OnlineProfilesButton
+local OnlineProfilesButtonImage = Instance.new("ImageLabel")
+OnlineProfilesButtonImage.BackgroundTransparency = 1
+OnlineProfilesButtonImage.Position = UDim2.new(0, 14, 0, 7)
+OnlineProfilesButtonImage.Size = UDim2.new(0, 17, 0, 16)
+OnlineProfilesButtonImage.Image = downloadVapeAsset("vape/assets/OnlineProfilesButton.png")
+OnlineProfilesButtonImage.ImageColor3 = Color3.fromRGB(121, 121, 121)
+OnlineProfilesButtonImage.ZIndex = 1
+OnlineProfilesButtonImage.Active = false
+OnlineProfilesButtonImage.Parent = OnlineProfilesButton
+local OnlineProfilesbuttonround1 = Instance.new("UICorner")
+OnlineProfilesbuttonround1.CornerRadius = UDim.new(0, 5)
+OnlineProfilesbuttonround1.Parent = OnlineProfilesButton
+local OnlineProfilesbuttonTargetInfoMainInfoCorner = Instance.new("UICorner")
+OnlineProfilesbuttonTargetInfoMainInfoCorner.CornerRadius = UDim.new(0, 5)
+OnlineProfilesbuttonTargetInfoMainInfoCorner.Parent = OnlineProfilesButtonBKG
+local OnlineProfilesFrame = Instance.new("Frame")
+OnlineProfilesFrame.Size = UDim2.new(0, 660, 0, 445)
+OnlineProfilesFrame.Position = UDim2.new(0.5, -330, 0.5, -223)
+OnlineProfilesFrame.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
+OnlineProfilesFrame.Parent = GuiLibrary.MainGui.ScaledGui.OnlineProfiles
+local OnlineProfilesExitButton = Instance.new("ImageButton")
+OnlineProfilesExitButton.Name = "OnlineProfilesExitButton"
+OnlineProfilesExitButton.ImageColor3 = Color3.fromRGB(121, 121, 121)
+OnlineProfilesExitButton.Size = UDim2.new(0, 24, 0, 24)
+OnlineProfilesExitButton.AutoButtonColor = false
+OnlineProfilesExitButton.Image = downloadVapeAsset("vape/assets/ExitIcon1.png")
+OnlineProfilesExitButton.Visible = true
+OnlineProfilesExitButton.Position = UDim2.new(1, -31, 0, 8)
+OnlineProfilesExitButton.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
+OnlineProfilesExitButton.Parent = OnlineProfilesFrame
+local OnlineProfilesExitButtonround = Instance.new("UICorner")
+OnlineProfilesExitButtonround.CornerRadius = UDim.new(0, 16)
+OnlineProfilesExitButtonround.Parent = OnlineProfilesExitButton
+OnlineProfilesExitButton.MouseEnter:Connect(function()
+	game:GetService("TweenService"):Create(OnlineProfilesExitButton, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(60, 60, 60), ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+end)
+OnlineProfilesExitButton.MouseLeave:Connect(function()
+	game:GetService("TweenService"):Create(OnlineProfilesExitButton, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(26, 25, 26), ImageColor3 = Color3.fromRGB(121, 121, 121)}):Play()
+end)
+local OnlineProfilesFrameShadow = Instance.new("ImageLabel")
+OnlineProfilesFrameShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+OnlineProfilesFrameShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+OnlineProfilesFrameShadow.Image = downloadVapeAsset("vape/assets/WindowBlur.png")
+OnlineProfilesFrameShadow.BackgroundTransparency = 1
+OnlineProfilesFrameShadow.ZIndex = -1
+OnlineProfilesFrameShadow.Size = UDim2.new(1, 6, 1, 6)
+OnlineProfilesFrameShadow.ImageColor3 = Color3.new()
+OnlineProfilesFrameShadow.ScaleType = Enum.ScaleType.Slice
+OnlineProfilesFrameShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+OnlineProfilesFrameShadow.Parent = OnlineProfilesFrame
+local OnlineProfilesFrameIcon = Instance.new("ImageLabel")
+OnlineProfilesFrameIcon.Size = UDim2.new(0, 19, 0, 16)
+OnlineProfilesFrameIcon.Image = downloadVapeAsset("vape/assets/ProfilesIcon.png")
+OnlineProfilesFrameIcon.Name = "WindowIcon"
+OnlineProfilesFrameIcon.BackgroundTransparency = 1
+OnlineProfilesFrameIcon.Position = UDim2.new(0, 10, 0, 13)
+OnlineProfilesFrameIcon.ImageColor3 = Color3.fromRGB(200, 200, 200)
+OnlineProfilesFrameIcon.Parent = OnlineProfilesFrame
+local OnlineProfilesFrameText = Instance.new("TextLabel")
+OnlineProfilesFrameText.Size = UDim2.new(0, 155, 0, 41)
+OnlineProfilesFrameText.BackgroundTransparency = 1
+OnlineProfilesFrameText.Name = "WindowTitle"
+OnlineProfilesFrameText.Position = UDim2.new(0, 36, 0, 0)
+OnlineProfilesFrameText.TextXAlignment = Enum.TextXAlignment.Left
+OnlineProfilesFrameText.Font = Enum.Font.SourceSans
+OnlineProfilesFrameText.TextSize = 17
+OnlineProfilesFrameText.Text = "Public Profiles"
+OnlineProfilesFrameText.TextColor3 = Color3.fromRGB(201, 201, 201)
+OnlineProfilesFrameText.Parent = OnlineProfilesFrame
+local OnlineProfilesFrameText2 = Instance.new("TextLabel")
+OnlineProfilesFrameText2.TextSize = 15
+OnlineProfilesFrameText2.TextColor3 = Color3.fromRGB(85, 84, 85)
+OnlineProfilesFrameText2.Text = "YOUR PROFILES"
+OnlineProfilesFrameText2.Font = Enum.Font.SourceSans
+OnlineProfilesFrameText2.BackgroundTransparency = 1
+OnlineProfilesFrameText2.TextXAlignment = Enum.TextXAlignment.Left
+OnlineProfilesFrameText2.TextYAlignment = Enum.TextYAlignment.Top
+OnlineProfilesFrameText2.Size = UDim2.new(1, 0, 0, 20)
+OnlineProfilesFrameText2.Position = UDim2.new(0, 10, 0, 48)
+OnlineProfilesFrameText2.Parent = OnlineProfilesFrame
+local OnlineProfilesFrameText3 = Instance.new("TextLabel")
+OnlineProfilesFrameText3.TextSize = 15
+OnlineProfilesFrameText3.TextColor3 = Color3.fromRGB(85, 84, 85)
+OnlineProfilesFrameText3.Text = "PUBLIC PROFILES"
+OnlineProfilesFrameText3.Font = Enum.Font.SourceSans
+OnlineProfilesFrameText3.BackgroundTransparency = 1
+OnlineProfilesFrameText3.TextXAlignment = Enum.TextXAlignment.Left
+OnlineProfilesFrameText3.TextYAlignment = Enum.TextYAlignment.Top
+OnlineProfilesFrameText3.Size = UDim2.new(1, 0, 0, 20)
+OnlineProfilesFrameText3.Position = UDim2.new(0, 231, 0, 48)
+OnlineProfilesFrameText3.Parent = OnlineProfilesFrame
+local OnlineProfilesBorder1 = Instance.new("Frame")
+OnlineProfilesBorder1.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+OnlineProfilesBorder1.BorderSizePixel = 0
+OnlineProfilesBorder1.Size = UDim2.new(1, 0, 0, 1)
+OnlineProfilesBorder1.Position = UDim2.new(0, 0, 0, 41)
+OnlineProfilesBorder1.Parent = OnlineProfilesFrame
+local OnlineProfilesBorder2 = Instance.new("Frame")
+OnlineProfilesBorder2.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+OnlineProfilesBorder2.BorderSizePixel = 0
+OnlineProfilesBorder2.Size = UDim2.new(0, 1, 1, -41)
+OnlineProfilesBorder2.Position = UDim2.new(0, 220, 0, 41)
+OnlineProfilesBorder2.Parent = OnlineProfilesFrame
+local OnlineProfilesList = Instance.new("ScrollingFrame")
+OnlineProfilesList.BackgroundTransparency = 1
+OnlineProfilesList.Size = UDim2.new(0, 408, 0, 319)
+OnlineProfilesList.Position = UDim2.new(0, 230, 0, 122)
+OnlineProfilesList.CanvasSize = UDim2.new(0, 408, 0, 319)
+OnlineProfilesList.Parent = OnlineProfilesFrame
+local OnlineProfilesListGrid = Instance.new("UIGridLayout")
+OnlineProfilesListGrid.CellSize = UDim2.new(0, 134, 0, 144)
+OnlineProfilesListGrid.CellPadding = UDim2.new(0, 4, 0, 4)
+OnlineProfilesListGrid.Parent = OnlineProfilesList
+local OnlineProfilesFrameCorner = Instance.new("UICorner")
+OnlineProfilesFrameCorner.CornerRadius = UDim.new(0, 4)
+OnlineProfilesFrameCorner.Parent = OnlineProfilesFrame
+OnlineProfilesButton.MouseButton1Click:Connect(function()
+	GuiLibrary.MainGui.ScaledGui.OnlineProfiles.Visible = true
+	GuiLibrary.MainGui.ScaledGui.ClickGui.Visible = false
+	if not profilesLoaded then
+		local onlineprofiles = {}
+		local saveplaceid = tostring(shared.CustomSaveVape or game.PlaceId)
+        local success, result = pcall(function()
+            return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeProfiles/main/Profiles/"..saveplaceid.."/profilelist.txt", true))
+        end)
+		for i,v in pairs(success and result or {}) do 
+			onlineprofiles[i] = v
+		end
+		for i2,v2 in pairs(onlineprofiles) do
+			local profileurl = "https://raw.githubusercontent.com/7GrandDadPGN/VapeProfiles/main/Profiles/"..saveplaceid.."/"..v2.OnlineProfileName
+			local profilebox = Instance.new("Frame")
+			profilebox.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
+			profilebox.Parent = OnlineProfilesList
+			local profiletext = Instance.new("TextLabel")
+			profiletext.TextSize = 15
+			profiletext.TextColor3 = Color3.fromRGB(137, 136, 137)
+			profiletext.Size = UDim2.new(0, 100, 0, 20)
+			profiletext.Position = UDim2.new(0, 18, 0, 25)
+			profiletext.Font = Enum.Font.SourceSans
+			profiletext.TextXAlignment = Enum.TextXAlignment.Left
+			profiletext.TextYAlignment = Enum.TextYAlignment.Top
+			profiletext.BackgroundTransparency = 1
+			profiletext.Text = i2
+			profiletext.Parent = profilebox
+			local profiledownload = Instance.new("TextButton")
+			profiledownload.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
+			profiledownload.Size = UDim2.new(0, 69, 0, 31)
+			profiledownload.Font = Enum.Font.SourceSans
+			profiledownload.TextColor3 = Color3.fromRGB(200, 200, 200)
+			profiledownload.TextSize = 15
+			profiledownload.AutoButtonColor = false
+			profiledownload.Text = "DOWNLOAD"
+			profiledownload.Position = UDim2.new(0, 14, 0, 96)
+			profiledownload.Visible = false 
+			profiledownload.Parent = profilebox
+			profiledownload.ZIndex = 2
+			local profiledownloadbkg = Instance.new("Frame")
+			profiledownloadbkg.Size = UDim2.new(0, 71, 0, 33)
+			profiledownloadbkg.BackgroundColor3 = Color3.fromRGB(42, 41, 42)
+			profiledownloadbkg.Position = UDim2.new(0, 13, 0, 95)
+			profiledownloadbkg.ZIndex = 1
+			profiledownloadbkg.Visible = false
+			profiledownloadbkg.Parent = profilebox
+			profilebox.MouseEnter:Connect(function()
+				profiletext.TextColor3 = Color3.fromRGB(200, 200, 200)
+				profiledownload.Visible = true 
+				profiledownloadbkg.Visible = true
+			end)
+			profilebox.MouseLeave:Connect(function()
+				profiletext.TextColor3 = Color3.fromRGB(137, 136, 137)
+				profiledownload.Visible = false
+				profiledownloadbkg.Visible = false
+			end)
+			profiledownload.MouseEnter:Connect(function()
+				profiledownload.BackgroundColor3 = Color3.fromRGB(5, 134, 105)
+			end)
+			profiledownload.MouseLeave:Connect(function()
+				profiledownload.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
+			end)
+			profiledownload.MouseButton1Click:Connect(function()
+				writefile(baseDirectory.."Profiles/"..v2.ProfileName..saveplaceid..".vapeprofile.txt", game:HttpGet(profileurl, true))
+				GuiLibrary.Profiles[v2.ProfileName] = {Keybind = "", Selected = false}
+				local profiles = {}
+				for i,v in pairs(GuiLibrary.Profiles) do 
+					table.insert(profiles, i)
+				end
+				table.sort(profiles, function(a, b) return b == "default" and true or a:lower() < b:lower() end)
+				ProfilesTextList.RefreshValues(profiles)
+			end)
+			local profileround = Instance.new("UICorner")
+			profileround.CornerRadius = UDim.new(0, 4)
+			profileround.Parent = profilebox
+			local profileTargetInfoMainInfoCorner = Instance.new("UICorner")
+			profileTargetInfoMainInfoCorner.CornerRadius = UDim.new(0, 4)
+			profileTargetInfoMainInfoCorner.Parent = profiledownload
+			local profileTargetInfoHealthBackgroundCorner = Instance.new("UICorner")
+			profileTargetInfoHealthBackgroundCorner.CornerRadius = UDim.new(0, 4)
+			profileTargetInfoHealthBackgroundCorner.Parent = profiledownloadbkg
+		end
+		profilesloaded = true
+	end
+end)
+OnlineProfilesExitButton.MouseButton1Click:Connect(function()
+	GuiLibrary.MainGui.ScaledGui.OnlineProfiles.Visible = false
+	GuiLibrary.MainGui.ScaledGui.ClickGui.Visible = true
+end)
+GUI.CreateDivider()
+
+local TextGUI = GuiLibrary.CreateCustomWindow({
+	Name = "Text GUI", 
+	Icon = "vape/assets/TextGUIIcon1.png", 
+	IconSize = 21
+})
+local TextGUICircleObject = {CircleList = {}}
+GUI.CreateCustomToggle({
+	Name = "Text GUI", 
+	Icon = "vape/assets/TextGUIIcon3.png",
+	Function = function(callback) TextGUI.SetVisible(callback) end,
+	Priority = 2
+})	
+local GUIColorSlider = {RainbowValue = false}
+local TextGUIMode = {Value = "Normal"}
+local TextGUISortMode = {Value = "Alphabetical"}
+local TextGUIBackgroundToggle = {Enabled = false}
+local TextGUIObjects = {Logo = {}, Labels = {}, ShadowLabels = {}, Backgrounds = {}}
+local TextGUIConnections = {}
+local TextGUIFormatted = {}
+local VapeLogoFrame = Instance.new("Frame")
+VapeLogoFrame.BackgroundTransparency = 1
+VapeLogoFrame.Size = UDim2.new(1, 0, 1, 0)
+VapeLogoFrame.Parent = TextGUI.GetCustomChildren()
+local VapeLogo = Instance.new("ImageLabel")
+VapeLogo.Parent = VapeLogoFrame
+VapeLogo.Name = "Logo"
+VapeLogo.Size = UDim2.new(0, 100, 0, 27)
+VapeLogo.Position = UDim2.new(1, -140, 0, 3)
+VapeLogo.BackgroundColor3 = Color3.new()
+VapeLogo.BorderSizePixel = 0
+VapeLogo.BackgroundTransparency = 1
+VapeLogo.Visible = true
+VapeLogo.Image = downloadVapeAsset("vape/assets/VapeLogo3.png")
+local VapeLogoV4 = Instance.new("ImageLabel")
+VapeLogoV4.Parent = VapeLogo
+VapeLogoV4.Size = UDim2.new(0, 41, 0, 24)
+VapeLogoV4.Name = "Logo2"
+VapeLogoV4.Position = UDim2.new(1, 0, 0, 1)
+VapeLogoV4.BorderSizePixel = 0
+VapeLogoV4.BackgroundColor3 = Color3.new()
+VapeLogoV4.BackgroundTransparency = 1
+VapeLogoV4.Image = downloadVapeAsset("vape/assets/VapeLogo4.png")
+local VapeLogoShadow = VapeLogo:Clone()
+VapeLogoShadow.ImageColor3 = Color3.new()
+VapeLogoShadow.ImageTransparency = 0.5
+VapeLogoShadow.ZIndex = 0
+VapeLogoShadow.Position = UDim2.new(0, 1, 0, 1)
+VapeLogoShadow.Visible = false
+VapeLogoShadow.Parent = VapeLogo
+VapeLogoShadow.Logo2.ImageColor3 = Color3.new()
+VapeLogoShadow.Logo2.ZIndex = 0
+VapeLogoShadow.Logo2.ImageTransparency = 0.5
+local VapeLogoGradient = Instance.new("UIGradient")
+VapeLogoGradient.Rotation = 90
+VapeLogoGradient.Parent = VapeLogo
+local VapeLogoGradient2 = Instance.new("UIGradient")
+VapeLogoGradient2.Rotation = 90
+VapeLogoGradient2.Parent = VapeLogoV4
+local VapeText = Instance.new("TextLabel")
+VapeText.Parent = VapeLogoFrame
+VapeText.Size = UDim2.new(1, 0, 1, 0)
+VapeText.Position = UDim2.new(1, -154, 0, 35)
+VapeText.TextColor3 = Color3.new(1, 1, 1)
+VapeText.RichText = true
+VapeText.BackgroundTransparency = 1
+VapeText.TextXAlignment = Enum.TextXAlignment.Left
+VapeText.TextYAlignment = Enum.TextYAlignment.Top
+VapeText.BorderSizePixel = 0
+VapeText.BackgroundColor3 = Color3.new()
+VapeText.Font = Enum.Font.SourceSans
+VapeText.Text = ""
+VapeText.TextSize = 23
+local VapeTextExtra = Instance.new("TextLabel")
+VapeTextExtra.Name = "ExtraText"
+VapeTextExtra.Parent = VapeText
+VapeTextExtra.Size = UDim2.new(1, 0, 1, 0)
+VapeTextExtra.Position = UDim2.new(0, 1, 0, 1)
+VapeTextExtra.BorderSizePixel = 0
+VapeTextExtra.Visible = false
+VapeTextExtra.ZIndex = 0
+VapeTextExtra.Text = ""
+VapeTextExtra.BackgroundTransparency = 1
+VapeTextExtra.TextTransparency = 0.5
+VapeTextExtra.TextXAlignment = Enum.TextXAlignment.Left
+VapeTextExtra.TextYAlignment = Enum.TextYAlignment.Top
+VapeTextExtra.TextColor3 = Color3.new()
+VapeTextExtra.Font = Enum.Font.SourceSans
+VapeTextExtra.TextSize = 23
+local VapeCustomText = Instance.new("TextLabel")
+VapeCustomText.TextSize = 30
+VapeCustomText.Font = Enum.Font.GothamBold
+VapeCustomText.Size = UDim2.new(1, 0, 1, 0)
+VapeCustomText.BackgroundTransparency = 1
+VapeCustomText.Position = UDim2.new(0, 0, 0, 35)
+VapeCustomText.TextXAlignment = Enum.TextXAlignment.Left
+VapeCustomText.TextYAlignment = Enum.TextYAlignment.Top
+VapeCustomText.Text = ""
+VapeCustomText.Parent = VapeLogoFrame
+local VapeCustomTextShadow = VapeCustomText:Clone()
+VapeCustomTextShadow.ZIndex = -1
+VapeCustomTextShadow.Size = UDim2.new(1, 0, 1, 0)
+VapeCustomTextShadow.TextTransparency = 0.5
+VapeCustomTextShadow.TextColor3 = Color3.new()
+VapeCustomTextShadow.Position = UDim2.new(0, 1, 0, 1)
+VapeCustomTextShadow.Parent = VapeCustomText
+VapeCustomText:GetPropertyChangedSignal("TextXAlignment"):Connect(function()
+	VapeCustomTextShadow.TextXAlignment = VapeCustomText.TextXAlignment
+end)
+local VapeBackground = Instance.new("Frame")
+VapeBackground.BackgroundTransparency = 1
+VapeBackground.BorderSizePixel = 0
+VapeBackground.BackgroundColor3 = Color3.new()
+VapeBackground.Size = UDim2.new(1, 0, 1, 0)
+VapeBackground.Visible = false 
+VapeBackground.Parent = VapeLogoFrame
+VapeBackground.ZIndex = 0
+local VapeBackgroundList = Instance.new("UIListLayout")
+VapeBackgroundList.FillDirection = Enum.FillDirection.Vertical
+VapeBackgroundList.SortOrder = Enum.SortOrder.LayoutOrder
+VapeBackgroundList.Padding = UDim.new(0, 0)
+VapeBackgroundList.Parent = VapeBackground
+local VapeBackgroundTable = {}
+local VapeScale = Instance.new("UIScale")
+VapeScale.Parent = VapeLogoFrame
+
+local function TextGUIUpdate()
+	local scaledgui = vapeInjected and GuiLibrary.MainGui.ScaledGui
+	if scaledgui and scaledgui.Visible then
+		local formattedText = ""
+		local moduleList = {}
+
+		for i, v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do
+			if v.Type == "OptionsButton" and v.Api.Enabled then
+                local blacklistedCheck = table.find(TextGUICircleObject.CircleList.ObjectList, v.Api.Name)
+                blacklistedCheck = blacklistedCheck and TextGUICircleObject.CircleList.ObjectList[blacklistedCheck]
+                if not blacklistedCheck then
+					local extraText = v.Api.GetExtraText()
+                    table.insert(moduleList, {Text = v.Api.Name, ExtraText = extraText ~= "" and " "..extraText or ""})
+                end
+			end
+		end
+
+		if TextGUISortMode.Value == "Alphabetical" then
+			table.sort(moduleList, function(a, b) return a.Text:lower() < b.Text:lower() end)
+		else
+			table.sort(moduleList, function(a, b) 
+				return textService:GetTextSize(a.Text..a.ExtraText, VapeText.TextSize, VapeText.Font, Vector2.new(1000000, 1000000)).X > textService:GetTextSize(b.Text..b.ExtraText, VapeText.TextSize, VapeText.Font, Vector2.new(1000000, 1000000)).X 
+			end)
+		end
+
+		local backgroundList = {}
+		local first = true
+		for i, v in pairs(moduleList) do
+            local newEntryText = v.Text..v.ExtraText
+			if first then
+				formattedText = "\n"..newEntryText
+				first = false
+			else
+				formattedText = formattedText..'\n'..newEntryText
+			end
+			table.insert(backgroundList, newEntryText)
+		end
+
+		TextGUIFormatted = moduleList
+		VapeTextExtra.Text = formattedText
+        VapeText.Size = UDim2.fromOffset(154, (formattedText ~= "" and textService:GetTextSize(formattedText, VapeText.TextSize, VapeText.Font, Vector2.new(1000000, 1000000)) or Vector2.zero).Y)
+
+        if TextGUI.GetCustomChildren().Parent then
+            if (TextGUI.GetCustomChildren().Parent.Position.X.Offset + TextGUI.GetCustomChildren().Parent.Size.X.Offset / 2) >= (gameCamera.ViewportSize.X / 2) then
+                VapeText.TextXAlignment = Enum.TextXAlignment.Right
+                VapeTextExtra.TextXAlignment = Enum.TextXAlignment.Right
+                VapeTextExtra.Position = UDim2.fromOffset(5, 1)
+                VapeLogo.Position = UDim2.new(1, -142, 0, 8)
+                VapeText.Position = UDim2.new(1, -158, 0, (VapeLogo.Visible and (TextGUIBackgroundToggle.Enabled and 41 or 35) or 5) + (VapeCustomText.Visible and 25 or 0) - 23)
+                VapeCustomText.Position = UDim2.fromOffset(0, VapeLogo.Visible and 35 or 0)
+                VapeCustomText.TextXAlignment = Enum.TextXAlignment.Right
+                VapeBackgroundList.HorizontalAlignment = Enum.HorizontalAlignment.Right
+                VapeBackground.Position = VapeText.Position + UDim2.fromOffset(-56, 2 + 23)
+            else
+                VapeText.TextXAlignment = Enum.TextXAlignment.Left
+                VapeTextExtra.TextXAlignment = Enum.TextXAlignment.Left
+                VapeTextExtra.Position = UDim2.fromOffset(5, 1)
+                VapeLogo.Position = UDim2.fromOffset(2, 8)
+                VapeText.Position = UDim2.fromOffset(6, (VapeLogo.Visible and (TextGUIBackgroundToggle.Enabled and 41 or 35) or 5) + (VapeCustomText.Visible and 25 or 0) - 23)
+				VapeCustomText.Position = UDim2.fromOffset(0, VapeLogo.Visible and 35 or 0)
+				VapeCustomText.TextXAlignment = Enum.TextXAlignment.Left
+                VapeBackgroundList.HorizontalAlignment = Enum.HorizontalAlignment.Left
+                VapeBackground.Position = VapeText.Position + UDim2.fromOffset(-1, 2 + 23)
+            end
+        end
+        
+		if TextGUIMode.Value == "Drawing" then 
+			for i,v in pairs(TextGUIObjects.Labels) do 
+				v.Visible = false
+				v:Remove()
+				TextGUIObjects.Labels[i] = nil
+			end
+			for i,v in pairs(TextGUIObjects.ShadowLabels) do 
+				v.Visible = false
+				v:Remove()
+				TextGUIObjects.ShadowLabels[i] = nil
+			end
+			for i,v in pairs(backgroundList) do 
+				local textdraw = Drawing.new("Text")
+				textdraw.Text = v
+				textdraw.Size = 23 * VapeScale.Scale
+				textdraw.ZIndex = 2
+				textdraw.Position = VapeText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeText.AbsoluteSize.X - textdraw.TextBounds.X), ((textdraw.Size - 3) * i) + 6)
+				textdraw.Visible = true
+				local textdraw2 = Drawing.new("Text")
+				textdraw2.Text = textdraw.Text
+				textdraw2.Size = 23 * VapeScale.Scale
+				textdraw2.Position = textdraw.Position + Vector2.new(1, 1)
+				textdraw2.Color = Color3.new()
+				textdraw2.Transparency = 0.5
+				textdraw2.Visible = VapeTextExtra.Visible
+				table.insert(TextGUIObjects.Labels, textdraw)
+				table.insert(TextGUIObjects.ShadowLabels, textdraw2)
+			end
+		end
+
+        for i,v in pairs(VapeBackground:GetChildren()) do
+			table.clear(VapeBackgroundTable)
+            if v:IsA("Frame") then v:Destroy() end
+        end
+        for i,v in pairs(backgroundList) do
+            local textsize = textService:GetTextSize(v, VapeText.TextSize, VapeText.Font, Vector2.new(1000000, 1000000))
+            local backgroundFrame = Instance.new("Frame")
+            backgroundFrame.BorderSizePixel = 0
+            backgroundFrame.BackgroundTransparency = 0.62
+            backgroundFrame.BackgroundColor3 = Color3.new()
+            backgroundFrame.Visible = true
+            backgroundFrame.ZIndex = 0
+            backgroundFrame.LayoutOrder = i
+            backgroundFrame.Size = UDim2.fromOffset(textsize.X + 8, textsize.Y)
+            backgroundFrame.Parent = VapeBackground
+            local backgroundLineFrame = Instance.new("Frame")
+            backgroundLineFrame.Size = UDim2.new(0, 2, 1, 0)
+            backgroundLineFrame.Position = (VapeBackgroundList.HorizontalAlignment == Enum.HorizontalAlignment.Left and UDim2.new() or UDim2.new(1, -2, 0, 0))
+            backgroundLineFrame.BorderSizePixel = 0
+            backgroundLineFrame.Name = "ColorFrame"
+            backgroundLineFrame.Parent = backgroundFrame
+            local backgroundLineExtra = Instance.new("Frame")
+            backgroundLineExtra.BorderSizePixel = 0
+            backgroundLineExtra.BackgroundTransparency = 0.96
+            backgroundLineExtra.BackgroundColor3 = Color3.new()
+            backgroundLineExtra.ZIndex = 0
+            backgroundLineExtra.Size = UDim2.new(1, 0, 0, 2)
+            backgroundLineExtra.Position = UDim2.new(0, 0, 1, -1)
+            backgroundLineExtra.Parent = backgroundFrame
+			table.insert(VapeBackgroundTable, backgroundFrame)
+        end
+		
+		GuiLibrary.UpdateUI(GUIColorSlider.Hue, GUIColorSlider.Sat, GUIColorSlider.Value)
+	end
+end
+
+TextGUI.GetCustomChildren().Parent:GetPropertyChangedSignal("Position"):Connect(TextGUIUpdate)
+GuiLibrary.UpdateHudEvent.Event:Connect(TextGUIUpdate)
+VapeScale:GetPropertyChangedSignal("Scale"):Connect(function()
+	local childrenobj = TextGUI.GetCustomChildren()
+	local check = (childrenobj.Parent.Position.X.Offset + childrenobj.Parent.Size.X.Offset / 2) >= (gameCamera.ViewportSize.X / 2)
+	childrenobj.Position = UDim2.new((check and -(VapeScale.Scale - 1) or 0), (check and 0 or -6 * (VapeScale.Scale - 1)), 1, -6 * (VapeScale.Scale - 1))
+	TextGUIUpdate()
+end)
+TextGUIMode = TextGUI.CreateDropdown({
+	Name = "Mode",
+	List = {"Normal", "Drawing"},
+	Function = function(val)
+		VapeLogoFrame.Visible = val == "Normal"
+		for i,v in pairs(TextGUIConnections) do 
+			v:Disconnect()
+		end
+		for i,v in pairs(TextGUIObjects) do 
+			for i2,v2 in pairs(v) do 
+				v2.Visible = false
+				v2:Remove()
+				v[i2] = nil
+			end
+		end
+		if val == "Drawing" then
+			local VapeLogoDrawing = Drawing.new("Image")
+			VapeLogoDrawing.Data = readfile("vape/assets/VapeLogo3.png")
+			VapeLogoDrawing.Size = VapeLogo.AbsoluteSize
+			VapeLogoDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(0, 36)
+			VapeLogoDrawing.ZIndex = 2
+			VapeLogoDrawing.Visible = VapeLogo.Visible
+			local VapeLogoV4Drawing = Drawing.new("Image")
+			VapeLogoV4Drawing.Data = readfile("vape/assets/VapeLogo4.png")
+			VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize
+			VapeLogoV4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(0, 36)
+			VapeLogoV4Drawing.ZIndex = 2
+			VapeLogoV4Drawing.Visible = VapeLogo.Visible
+			local VapeLogoShadowDrawing = Drawing.new("Image")
+			VapeLogoShadowDrawing.Data = readfile("vape/assets/VapeLogo3.png")
+			VapeLogoShadowDrawing.Size = VapeLogo.AbsoluteSize
+			VapeLogoShadowDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(1, 37)
+			VapeLogoShadowDrawing.Transparency = 0.5
+			VapeLogoShadowDrawing.Visible = VapeLogo.Visible and VapeLogoShadow.Visible
+			local VapeLogo4Drawing = Drawing.new("Image")
+			VapeLogo4Drawing.Data = readfile("vape/assets/VapeLogo4.png")
+			VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize
+			VapeLogo4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(1, 37)
+			VapeLogo4Drawing.Transparency = 0.5
+			VapeLogo4Drawing.Visible = VapeLogo.Visible and VapeLogoShadow.Visible
+			local VapeCustomDrawingText = Drawing.new("Text")
+			VapeCustomDrawingText.Size = 30
+			VapeCustomDrawingText.Text = VapeCustomText.Text
+			VapeCustomDrawingText.Color = VapeCustomText.TextColor3
+			VapeCustomDrawingText.ZIndex = 2
+			VapeCustomDrawingText.Position = VapeCustomText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeCustomText.AbsoluteSize.X - VapeCustomDrawingText.TextBounds.X), 32)
+			VapeCustomDrawingText.Visible = VapeCustomText.Visible
+			local VapeCustomDrawingShadow = Drawing.new("Text")
+			VapeCustomDrawingShadow.Size = 30
+			VapeCustomDrawingShadow.Text = VapeCustomText.Text
+			VapeCustomDrawingShadow.Transparency = 0.5
+			VapeCustomDrawingShadow.Color = Color3.new()
+			VapeCustomDrawingShadow.Position = VapeCustomDrawingText.Position + Vector2.new(1, 1)
+			VapeCustomDrawingShadow.Visible = VapeCustomText.Visible and VapeTextExtra.Visible
+			pcall(function()
+				VapeLogoShadowDrawing.Color = Color3.new()
+				VapeLogo4Drawing.Color = Color3.new()
+				VapeLogoDrawing.Color = VapeLogoGradient.Color.Keypoints[1].Value
+			end)
+			table.insert(TextGUIObjects.Logo, VapeLogoDrawing)
+			table.insert(TextGUIObjects.Logo, VapeLogoV4Drawing)
+			table.insert(TextGUIObjects.Logo, VapeLogoShadowDrawing)
+			table.insert(TextGUIObjects.Logo, VapeLogo4Drawing)
+			table.insert(TextGUIObjects.Logo, VapeCustomDrawingText)
+			table.insert(TextGUIObjects.Logo, VapeCustomDrawingShadow)
+			table.insert(TextGUIConnections, VapeLogo:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
+				VapeLogoDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(0, 36)
+				VapeLogoShadowDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(1, 37)
+			end))
+			table.insert(TextGUIConnections, VapeLogo:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+				VapeLogoDrawing.Size = VapeLogo.AbsoluteSize
+				VapeLogoShadowDrawing.Size = VapeLogo.AbsoluteSize
+				VapeCustomDrawingText.Size = 30 * VapeScale.Scale
+				VapeCustomDrawingShadow.Size = 30 * VapeScale.Scale
+			end))
+			table.insert(TextGUIConnections, VapeLogoV4:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
+				VapeLogoV4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(0, 36)
+				VapeLogo4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(1, 37)
+			end))
+			table.insert(TextGUIConnections, VapeLogoV4:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+				VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize
+				VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize
+			end))
+			table.insert(TextGUIConnections, VapeCustomText:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
+				VapeCustomDrawingText.Position = VapeCustomText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeCustomText.AbsoluteSize.X - VapeCustomDrawingText.TextBounds.X), 32)
+				VapeCustomDrawingShadow.Position = VapeCustomDrawingText.Position + Vector2.new(1, 1)
+			end))
+			table.insert(TextGUIConnections, VapeLogoShadow:GetPropertyChangedSignal("Visible"):Connect(function()
+				VapeLogoShadowDrawing.Visible = VapeLogoShadow.Visible
+				VapeLogo4Drawing.Visible = VapeLogoShadow.Visible
+			end))
+			table.insert(TextGUIConnections, VapeTextExtra:GetPropertyChangedSignal("Visible"):Connect(function()
+				for i,textdraw in pairs(TextGUIObjects.ShadowLabels) do 
+					textdraw.Visible = VapeTextExtra.Visible
+				end
+				VapeCustomDrawingShadow.Visible = VapeCustomText.Visible and VapeTextExtra.Visible
+			end))
+			table.insert(TextGUIConnections, VapeLogo:GetPropertyChangedSignal("Visible"):Connect(function()
+				VapeLogoDrawing.Visible = VapeLogo.Visible
+				VapeLogoV4Drawing.Visible = VapeLogo.Visible
+				VapeLogoShadowDrawing.Visible = VapeLogo.Visible and VapeTextExtra.Visible
+				VapeLogo4Drawing.Visible = VapeLogo.Visible and VapeTextExtra.Visible
+			end))
+			table.insert(TextGUIConnections, VapeCustomText:GetPropertyChangedSignal("Visible"):Connect(function()
+				VapeCustomDrawingText.Visible = VapeCustomText.Visible
+				VapeCustomDrawingShadow.Visible = VapeCustomText.Visible and VapeTextExtra.Visible
+			end))
+			table.insert(TextGUIConnections, VapeCustomText:GetPropertyChangedSignal("Text"):Connect(function()
+				VapeCustomDrawingText.Text = VapeCustomText.Text
+				VapeCustomDrawingShadow.Text = VapeCustomText.Text
+				VapeCustomDrawingText.Position = VapeCustomText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeCustomText.AbsoluteSize.X - VapeCustomDrawingText.TextBounds.X), 32)
+				VapeCustomDrawingShadow.Position = VapeCustomDrawingText.Position + Vector2.new(1, 1)
+			end))
+			table.insert(TextGUIConnections, VapeCustomText:GetPropertyChangedSignal("TextColor3"):Connect(function()
+				VapeCustomDrawingText.Color = VapeCustomText.TextColor3
+			end))
+			table.insert(TextGUIConnections, VapeText:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
+				for i,textdraw in pairs(TextGUIObjects.Labels) do 
+					textdraw.Position = VapeText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeText.AbsoluteSize.X - textdraw.TextBounds.X), ((textdraw.Size - 3) * i) + 6)
+				end
+				for i,textdraw in pairs(TextGUIObjects.ShadowLabels) do 
+					textdraw.Position = Vector2.new(1, 1) + (VapeText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeText.AbsoluteSize.X - textdraw.TextBounds.X), ((textdraw.Size - 3) * i) + 6))
+				end
+			end))
+			table.insert(TextGUIConnections, VapeLogoGradient:GetPropertyChangedSignal("Color"):Connect(function()
+				pcall(function()
+					VapeLogoDrawing.Color = VapeLogoGradient.Color.Keypoints[1].Value
+				end)
+			end))
+		end
+	end
+})
+TextGUISortMode = TextGUI.CreateDropdown({
+	Name = "Sort",
+	List = {"Alphabetical", "Length"},
+	Function = function(val)
+		GuiLibrary.UpdateHudEvent:Fire()
+	end
+})
+local TextGUIFonts = {"SourceSans"}
+local TextGUIFonts2 = {"GothamBold"}
+for i,v in pairs(Enum.Font:GetEnumItems()) do 
+	if v.Name ~= "SourceSans" then
+		table.insert(TextGUIFonts, v.Name)
+	end
+	if v.Name ~= "GothamBold" then
+		table.insert(TextGUIFonts2, v.Name)
+	end
+end
+TextGUI.CreateDropdown({
+	Name = "Font",
+	List = TextGUIFonts,
+	Function = function(val)
+		VapeText.Font = Enum.Font[val]
+		VapeTextExtra.Font = Enum.Font[val]
+		GuiLibrary.UpdateHudEvent:Fire()
+	end
+})
+TextGUI.CreateDropdown({
+	Name = "CustomTextFont",
+	List = TextGUIFonts2,
+	Function = function(val)
+		VapeText.Font = Enum.Font[val]
+		VapeTextExtra.Font = Enum.Font[val]
+		GuiLibrary.UpdateHudEvent:Fire()
+	end
+})
+TextGUI.CreateSlider({
+	Name = "Scale",
+	Min = 1,
+	Max = 50,
+	Default = 10,
+	Function = function(val)
+		VapeScale.Scale = val / 10
+	end
+})
+TextGUI.CreateToggle({
+	Name = "Shadow", 
+	Function = function(callback) 
+        VapeTextExtra.Visible = callback 
+        VapeLogoShadow.Visible = callback 
+    end,
+	HoverText = "Renders shadowed text."
+})
+TextGUI.CreateToggle({
+	Name = "Watermark", 
+	Function = function(callback) 
+		VapeLogo.Visible = callback
+		GuiLibrary.UpdateHudEvent:Fire()
+	end,
+	HoverText = "Renders a vape watermark"
+})
+TextGUIBackgroundToggle = TextGUI.CreateToggle({
+	Name = "Render background", 
+	Function = function(callback)
+		VapeBackground.Visible = callback
+		GuiLibrary.UpdateHudEvent:Fire()
+	end
+})
+TextGUI.CreateToggle({
+	Name = "Hide Modules",
+	Function = function(callback) 
+		if TextGUICircleObject.Object then
+			TextGUICircleObject.Object.Visible = callback
+		end
+	end
+})
+TextGUICircleObject = TextGUI.CreateCircleWindow({
+	Name = "Blacklist",
+	Type = "Blacklist",
+	UpdateFunction = function()
+		GuiLibrary.UpdateHudEvent:Fire()
+	end
+})
+TextGUICircleObject.Object.Visible = false
+local TextGUIGradient = TextGUI.CreateToggle({
+	Name = "Gradient Logo",
+	Function = function() 
+		GuiLibrary.UpdateHudEvent:Fire()
+	end
+})
+TextGUI.CreateToggle({
+	Name = "Alternate Text",
+	Function = function() 
+		GuiLibrary.UpdateHudEvent:Fire()
+	end
+})
+local CustomText = {Value = "", Object = nil}
+TextGUI.CreateToggle({
+	Name = "Add custom text", 
+	Function = function(callback) 
+		VapeCustomText.Visible = callback
+		CustomText.Object.Visible = callback
+		GuiLibrary.UpdateHudEvent:Fire()
+	end,
+	HoverText = "Renders a custom label"
+})
+CustomText = TextGUI.CreateTextBox({
+	Name = "Custom text",
+	FocusLost = function(enter)
+		VapeCustomText.Text = CustomText.Value
+		VapeCustomTextShadow.Text = CustomText.Value
+	end
+})
+CustomText.Object.Visible = false
+local TargetInfo = GuiLibrary.CreateCustomWindow({
+	Name = "Target Info",
+	Icon = "vape/assets/TargetInfoIcon1.png",
+	IconSize = 16
+})
+local TargetInfoDisplayNames = TargetInfo.CreateToggle({
+	Name = "Use Display Name",
+	Function = function() end,
+	Default = true
+})
+local TargetInfoBackground = {Enabled = false}
+local TargetInfoMainFrame = Instance.new("Frame")
+TargetInfoMainFrame.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
+TargetInfoMainFrame.BorderSizePixel = 0
+TargetInfoMainFrame.BackgroundTransparency = 1
+TargetInfoMainFrame.Size = UDim2.new(0, 220, 0, 72)
+TargetInfoMainFrame.Position = UDim2.new(0, 0, 0, 5)
+TargetInfoMainFrame.Parent = TargetInfo.GetCustomChildren()
+local TargetInfoMainInfo = Instance.new("Frame")
+TargetInfoMainInfo.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
+TargetInfoMainInfo.Size = UDim2.new(0, 220, 0, 80)
+TargetInfoMainInfo.BackgroundTransparency = 0.25
+TargetInfoMainInfo.Position = UDim2.new(0, 0, 0, 0)
+TargetInfoMainInfo.Name = "MainInfo"
+TargetInfoMainInfo.Parent = TargetInfoMainFrame
+local TargetInfoName = Instance.new("TextLabel")
+TargetInfoName.TextSize = 17
+TargetInfoName.Font = Enum.Font.SourceSans
+TargetInfoName.TextColor3 = Color3.fromRGB(162, 162, 162)
+TargetInfoName.Position = UDim2.new(0, 72, 0, 7)
+TargetInfoName.TextStrokeTransparency = 1
+TargetInfoName.BackgroundTransparency = 1
+TargetInfoName.Size = UDim2.new(0, 80, 0, 16)
+TargetInfoName.TextScaled = true
+TargetInfoName.Text = "Target name"
+TargetInfoName.ZIndex = 2
+TargetInfoName.TextXAlignment = Enum.TextXAlignment.Left
+TargetInfoName.TextYAlignment = Enum.TextYAlignment.Top
+TargetInfoName.Parent = TargetInfoMainInfo
+local TargetInfoNameShadow = TargetInfoName:Clone()
+TargetInfoNameShadow.Size = UDim2.new(1, 0, 1, 0)
+TargetInfoNameShadow.TextTransparency = 0.5
+TargetInfoNameShadow.TextColor3 = Color3.new()
+TargetInfoNameShadow.ZIndex = 1
+TargetInfoNameShadow.Position = UDim2.new(0, 1, 0, 1)
+TargetInfoName:GetPropertyChangedSignal("Text"):Connect(function()
+	TargetInfoNameShadow.Text = TargetInfoName.Text
+end)
+TargetInfoNameShadow.Parent = TargetInfoName
+local TargetInfoHealthBackground = Instance.new("Frame")
+TargetInfoHealthBackground.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+TargetInfoHealthBackground.Size = UDim2.new(0, 138, 0, 4)
+TargetInfoHealthBackground.Position = UDim2.new(0, 72, 0, 29)
+TargetInfoHealthBackground.Parent = TargetInfoMainInfo
+local TargetInfoHealthBackgroundShadow = Instance.new("ImageLabel")
+TargetInfoHealthBackgroundShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+TargetInfoHealthBackgroundShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+TargetInfoHealthBackgroundShadow.Image = downloadVapeAsset("vape/assets/WindowBlur.png")
+TargetInfoHealthBackgroundShadow.BackgroundTransparency = 1
+TargetInfoHealthBackgroundShadow.ImageTransparency = 0.6
+TargetInfoHealthBackgroundShadow.ZIndex = -1
+TargetInfoHealthBackgroundShadow.Size = UDim2.new(1, 6, 1, 6)
+TargetInfoHealthBackgroundShadow.ImageColor3 = Color3.new()
+TargetInfoHealthBackgroundShadow.ScaleType = Enum.ScaleType.Slice
+TargetInfoHealthBackgroundShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+TargetInfoHealthBackgroundShadow.Parent = TargetInfoHealthBackground
+local TargetInfoHealth = Instance.new("Frame")
+TargetInfoHealth.BackgroundColor3 = Color3.fromRGB(40, 137, 109)
+TargetInfoHealth.Size = UDim2.new(1, 0, 1, 0)
+TargetInfoHealth.ZIndex = 3
+TargetInfoHealth.BorderSizePixel = 0
+TargetInfoHealth.Parent = TargetInfoHealthBackground
+local TargetInfoHealthExtra = Instance.new("Frame")
+TargetInfoHealthExtra.BackgroundColor3 = Color3.fromRGB(255, 170, 0)
+TargetInfoHealthExtra.Size = UDim2.new(0, 0, 1, 0)
+TargetInfoHealthExtra.ZIndex = 4
+TargetInfoHealthExtra.BorderSizePixel = 0
+TargetInfoHealthExtra.AnchorPoint = Vector2.new(1, 0)
+TargetInfoHealthExtra.Position = UDim2.new(1, 0, 0, 0)
+TargetInfoHealthExtra.Parent = TargetInfoHealth
+local TargetInfoImage = Instance.new("ImageLabel")
+TargetInfoImage.Size = UDim2.new(0, 61, 0, 61)
+TargetInfoImage.BackgroundTransparency = 1
+TargetInfoImage.Image = 'rbxthumb://type=AvatarHeadShot&id='..playersService.LocalPlayer.UserId..'&w=420&h=420'
+TargetInfoImage.Position = UDim2.new(0, 5, 0, 10)
+TargetInfoImage.Parent = TargetInfoMainInfo
+local TargetInfoMainInfoCorner = Instance.new("UICorner")
+TargetInfoMainInfoCorner.CornerRadius = UDim.new(0, 4)
+TargetInfoMainInfoCorner.Parent = TargetInfoMainInfo
+local TargetInfoHealthBackgroundCorner = Instance.new("UICorner")
+TargetInfoHealthBackgroundCorner.CornerRadius = UDim.new(0, 2048)
+TargetInfoHealthBackgroundCorner.Parent = TargetInfoHealthBackground
+local TargetInfoHealthCorner = Instance.new("UICorner")
+TargetInfoHealthCorner.CornerRadius = UDim.new(0, 2048)
+TargetInfoHealthCorner.Parent = TargetInfoHealth
+local TargetInfoHealthCorner2 = Instance.new("UICorner")
+TargetInfoHealthCorner2.CornerRadius = UDim.new(0, 2048)
+TargetInfoHealthCorner2.Parent = TargetInfoHealthExtra
+local TargetInfoHealthExtraCorner = Instance.new("UICorner")
+TargetInfoHealthExtraCorner.CornerRadius = UDim.new(0, 4)
+TargetInfoHealthExtraCorner.Parent = TargetInfoImage
+TargetInfoBackground = TargetInfo.CreateToggle({
+	Name = "Use Background",
+	Function = function(callback) 
+		TargetInfoMainInfo.BackgroundTransparency = callback and 0.25 or 1
+		TargetInfoName.TextColor3 = callback and Color3.fromRGB(162, 162, 162) or Color3.new(1, 1, 1)
+		TargetInfoName.Size = UDim2.new(0, 80, 0, callback and 16 or 18)
+		TargetInfoHealthBackground.Size = UDim2.new(0, 138, 0, callback and 4 or 7)
+	end,
+	Default = true
+})
+local TargetInfoHealthTween
+TargetInfo.GetCustomChildren().Parent:GetPropertyChangedSignal("Size"):Connect(function()
+	TargetInfoMainInfo.Position = UDim2.fromOffset(0, TargetInfo.GetCustomChildren().Parent.Size ~= UDim2.fromOffset(220, 0) and -5 or 40)
+end)
+shared.VapeTargetInfo = {
+	UpdateInfo = function(tab, targetsize) 
+		if TargetInfo.GetCustomChildren().Parent then
+			local hasTarget = false
+			for _, v in pairs(shared.VapeTargetInfo.Targets) do
+				hasTarget = true
+				TargetInfoImage.Image = 'rbxthumb://type=AvatarHeadShot&id='..v.Player.UserId..'&w=420&h=420'
+				TargetInfoHealth:TweenSize(UDim2.new(math.clamp(v.Humanoid.Health / v.Humanoid.MaxHealth, 0, 1), 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25, true)
+				TargetInfoHealthExtra:TweenSize(UDim2.new(math.clamp((v.Humanoid.Health / v.Humanoid.MaxHealth) - 1, 0, 1), 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25, true)
+				if TargetInfoHealthTween then TargetInfoHealthTween:Cancel() end
+				TargetInfoHealthTween = game:GetService("TweenService"):Create(TargetInfoHealth, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromHSV(math.clamp(v.Humanoid.Health / v.Humanoid.MaxHealth, 0, 1) / 2.5, 0.89, 1)})
+				TargetInfoHealthTween:Play()
+				TargetInfoName.Text = (TargetInfoDisplayNames.Enabled and v.Player.DisplayName or v.Player.Name)
+				break
+			end
+			TargetInfoMainInfo.Visible = hasTarget or (TargetInfo.GetCustomChildren().Parent.Size ~= UDim2.new(0, 220, 0, 0))
+		end
+	end,
+	Targets = {},
+	Object = TargetInfo
+}
+task.spawn(function()
+	repeat
+		shared.VapeTargetInfo.UpdateInfo()
+		task.wait()
+	until not vapeInjected
+end)
+GUI.CreateCustomToggle({
+	Name = "Target Info", 
+	Icon = "vape/assets/TargetInfoIcon2.png", 
+	Function = function(callback) TargetInfo.SetVisible(callback) end,
+	Priority = 1
+})
+local GeneralSettings = GUI.CreateDivider2("General Settings")
+local ModuleSettings = GUI.CreateDivider2("Module Settings")
+local GUISettings = GUI.CreateDivider2("GUI Settings")
+local TeamsByColorToggle = {Enabled = false}
+TeamsByColorToggle = ModuleSettings.CreateToggle({
+	Name = "Teams by color", 
+	Function = function() if TeamsByColorToggle.Refresh then TeamsByColorToggle.Refresh:Fire() end end,
+	Default = true,
+	HoverText = "Ignore players on your team designated by the game"
+})
+TeamsByColorToggle.Refresh = Instance.new("BindableEvent")
+local MiddleClickInput
+ModuleSettings.CreateToggle({
+	Name = "MiddleClick friends", 
+	Function = function(callback) 
+		if callback then
+			MiddleClickInput = game:GetService("UserInputService").InputBegan:Connect(function(input1)
+				if input1.UserInputType == Enum.UserInputType.MouseButton3 then
+					local entityLibrary = shared.vapeentity
+					if entityLibrary then 
+						local rayparams = RaycastParams.new()
+						rayparams.FilterType = Enum.RaycastFilterType.Whitelist
+						local chars = {}
+						for i,v in pairs(entityLibrary.entityList) do 
+							table.insert(chars, v.Character)
+						end
+						rayparams.FilterDescendantsInstances = chars
+						local mouseunit = playersService.LocalPlayer:GetMouse().UnitRay
+						local ray = workspace:Raycast(mouseunit.Origin, mouseunit.Direction * 10000, rayparams)
+						if ray then 
+							for i,v in pairs(entityLibrary.entityList) do 
+								if ray.Instance:IsDescendantOf(v.Character) then 
+									local found = table.find(FriendsTextList.ObjectList, v.Player.Name)
+									if not found then
+										table.insert(FriendsTextList.ObjectList, v.Player.Name)
+										table.insert(FriendsTextList.ObjectListEnabled, true)
+										FriendsTextList.RefreshValues(FriendsTextList.ObjectList)
+									else
+										table.remove(FriendsTextList.ObjectList, found)
+										table.remove(FriendsTextList.ObjectListEnabled, found)
+										FriendsTextList.RefreshValues(FriendsTextList.ObjectList)
+									end
+									break
+								end
+							end
+						end
+					end
+				end
+			end)
+		else
+			if MiddleClickInput then MiddleClickInput:Disconnect() end
+		end
+	end,
+	HoverText = "Click middle mouse button to add the player you are hovering over as a friend"
+})
+ModuleSettings.CreateToggle({
+	Name = "Lobby Check",
+	Function = function() end,
+	Default = true,
+	HoverText = "Temporarily disables certain features in server lobbies."
+})
+GUIColorSlider = GUI.CreateColorSlider("GUI Theme", function(h, s, v) 
+	GuiLibrary.UpdateUI(h, s, v) 
+end)
+local BlatantModeToggle = GUI.CreateToggle({
+	Name = "Blatant mode",
+	Function = function() end,
+	HoverText = "Required for certain features."
+})
+local windowSortOrder = {
+	CombatButton = 1,
+	BlatantButton = 2,
+	RenderButton = 3,
+	UtilityButton = 4,
+	WorldButton = 5,
+	FriendsButton = 6,
+	TargetsButton = 7,
+	ProfilesButton = 8
+}
+local windowSortOrder2 = {"Combat", "Blatant", "Render", "Utility", "World"}
+
+local function getVapeSaturation(val)
+	local sat = 0.9
+	if val < 0.03 then 
+		sat = 0.75 + (0.15 * math.clamp(val / 0.03, 0, 1))
+	end
+	if val > 0.59 then 
+		sat = 0.9 - (0.4 * math.clamp((val - 0.59) / 0.07, 0, 1))
+	end
+	if val > 0.68 then 
+		sat = 0.5 + (0.4 * math.clamp((val - 0.68) / 0.14, 0, 1))
+	end
+	if val > 0.89 then 
+		sat = 0.9 - (0.15 * math.clamp((val - 0.89) / 0.1, 0, 1))
+	end
+	return sat
+end
+
+GuiLibrary.UpdateUI = function(h, s, val, bypass)
+	pcall(function()
+		local rainbowGUICheck = GUIColorSlider.RainbowValue
+		local mainRainbowSaturation = rainbowGUICheck and getVapeSaturation(h) or s
+		local mainRainbowGradient = h + (rainbowGUICheck and (-0.05) or 0)
+		mainRainbowGradient = mainRainbowGradient % 1
+        local mainRainbowGradientSaturation = TextGUIGradient.Enabled and getVapeSaturation(mainRainbowGradient) or mainRainbowSaturation
+
+		GuiLibrary.ObjectsThatCanBeSaved.GUIWindow.Object.Logo1.Logo2.ImageColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+		VapeText.TextColor3 = Color3.fromHSV(TextGUIGradient.Enabled and mainRainbowGradient or h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+		VapeCustomText.TextColor3 = VapeText.TextColor3
+		VapeLogoGradient.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)),
+			ColorSequenceKeypoint.new(1, VapeText.TextColor3)
+		})
+		VapeLogoGradient2.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromHSV(h, TextGUIGradient.Enabled and rainbowGUICheck and mainRainbowSaturation or 0, 1)),
+			ColorSequenceKeypoint.new(1, Color3.fromHSV(TextGUIGradient.Enabled and mainRainbowGradient or h, TextGUIGradient.Enabled and rainbowGUICheck and mainRainbowSaturation or 0, 1))
+		})
+
+		local newTextGUIText = "\n"
+		local backgroundTable = {}
+		for i, v in pairs(TextGUIFormatted) do
+			local rainbowcolor = h + (rainbowGUICheck and (-0.025 * (i + (TextGUIGradient.Enabled and 2 or 0))) or 0)
+			rainbowcolor = rainbowcolor % 1
+			local newcolor = Color3.fromHSV(rainbowcolor, rainbowGUICheck and getVapeSaturation(rainbowcolor) or mainRainbowSaturation, rainbowGUICheck and 1 or val)
+			newTextGUIText = newTextGUIText..'<font color="rgb('..math.floor(newcolor.R * 255)..","..math.floor(newcolor.G * 255)..","..math.floor(newcolor.B * 255)..')">'..v.Text..'</font><font color="rgb(170, 170, 170)">'..v.ExtraText..'</font>\n'
+			backgroundTable[i] = newcolor
+		end
+
+		if TextGUIMode.Value == "Drawing" then 
+			for i,v in pairs(TextGUIObjects.Labels) do 
+				if backgroundTable[i] then 
+					v.Color = backgroundTable[i]
+				end
+			end
+		end
+
+		if TextGUIBackgroundToggle.Enabled then
+			for i, v in pairs(VapeBackgroundTable) do
+				v.ColorFrame.BackgroundColor3 = backgroundTable[v.LayoutOrder] or Color3.new()
+			end
+		end
+		VapeText.Text = newTextGUIText
+
+		if (not GuiLibrary.MainGui.ScaledGui.ClickGui.Visible) and (not bypass) then return end
+		local buttonColorIndex = 0
+		for i, v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do
+			if v.Type == "TargetFrame" then
+				if v.Object2.Visible then
+					v.Object.TextButton.Frame.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				end
+			elseif v.Type == "TargetButton" then
+				if v.Api.Enabled then
+					v.Object.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				end
+			elseif v.Type == "CircleListFrame" then
+				if v.Object2.Visible then
+					v.Object.TextButton.Frame.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				end
+			elseif (v.Type == "Button" or v.Type == "ButtonMain") and v.Api.Enabled then
+				buttonColorIndex = buttonColorIndex + 1
+				local rainbowcolor = h + (rainbowGUICheck and (-0.025 * windowSortOrder[i]) or 0)
+				rainbowcolor = rainbowcolor % 1
+				local newcolor = Color3.fromHSV(rainbowcolor, rainbowGUICheck and getVapeSaturation(rainbowcolor) or mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				v.Object.ButtonText.TextColor3 = newcolor
+				if v.Object:FindFirstChild("ButtonIcon") then
+					v.Object.ButtonIcon.ImageColor3 = newcolor
+				end
+			elseif v.Type == "OptionsButton" then
+				if v.Api.Enabled then
+					local newcolor = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+					if (not oldrainbow) then
+						local mainRainbowGradient = table.find(windowSortOrder2, v.Object.Parent.Parent.Name)
+						mainRainbowGradient = mainRainbowGradient and (mainRainbowGradient - 1) > 0 and GuiLibrary.ObjectsThatCanBeSaved[windowSortOrder2[mainRainbowGradient - 1].."Window"].SortOrder or 0
+						local rainbowcolor = h + (rainbowGUICheck and (-0.025 * (mainRainbowGradient + v.SortOrder)) or 0)
+						rainbowcolor = rainbowcolor % 1
+						newcolor = Color3.fromHSV(rainbowcolor, rainbowGUICheck and getVapeSaturation(rainbowcolor) or mainRainbowSaturation, rainbowGUICheck and 1 or val)
+					end
+					v.Object.BackgroundColor3 = newcolor
+				end
+			elseif v.Type == "ExtrasButton" then
+				if v.Api.Enabled then
+					local rainbowcolor = h + (rainbowGUICheck and (-0.025 * buttonColorIndex) or 0)
+					rainbowcolor = rainbowcolor % 1
+					local newcolor = Color3.fromHSV(rainbowcolor, rainbowGUICheck and getVapeSaturation(rainbowcolor) or mainRainbowSaturation, rainbowGUICheck and 1 or val)
+					v.Object.ImageColor3 = newcolor
+				end
+			elseif (v.Type == "Toggle" or v.Type == "ToggleMain") and v.Api.Enabled then
+				v.Object.ToggleFrame1.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+			elseif v.Type == "Slider" or v.Type == "SliderMain" then
+				v.Object.Slider.FillSlider.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				v.Object.Slider.FillSlider.ButtonSlider.ImageColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+			elseif v.Type == "TwoSlider" then
+				v.Object.Slider.FillSlider.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				v.Object.Slider.ButtonSlider.ImageColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				v.Object.Slider.ButtonSlider2.ImageColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+			end
+		end
+
+		local rainbowcolor = h + (rainbowGUICheck and (-0.025 * buttonColorIndex) or 0)
+		rainbowcolor = rainbowcolor % 1
+		GuiLibrary.ObjectsThatCanBeSaved.GUIWindow.Object.Children.Extras.MainButton.ImageColor3 = (GUI.GetVisibleIcons() > 0 and Color3.fromHSV(rainbowcolor, getVapeSaturation(rainbowcolor), 1) or Color3.fromRGB(199, 199, 199))
+
+		for i, v in pairs(ProfilesTextList.ScrollingObject.ScrollingFrame:GetChildren()) do
+			if v:IsA("TextButton") and v.ItemText.Text == GuiLibrary.CurrentProfile then
+				v.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				v.ImageButton.BackgroundColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+				v.ItemText.TextColor3 = Color3.new(1, 1, 1)
+				v.ItemText.TextStrokeTransparency = 0.75
+			end
+		end
+	end)
+end
+
+GUISettings.CreateToggle({
+	Name = "Blur Background", 
+	Function = function(callback) 
+		GuiLibrary.MainBlur.Size = (callback and 25 or 0) 
+		game:GetService("RunService"):SetRobloxGuiFocused(GuiLibrary.MainGui.ScaledGui.ClickGui.Visible and callback) 
+	end,
+	Default = true,
+	HoverText = "Blur the background of the GUI"
+})
+local welcomeMessage = GUISettings.CreateToggle({
+	Name = "GUI bind indicator", 
+	Function = function() end, 
+	Default = true,
+	HoverText = 'Displays a message indicating your GUI keybind upon injecting.\nI.E "Press RIGHTSHIFT to open GUI"'
+})
+GUISettings.CreateToggle({
+	Name = "Old Rainbow", 
+	Function = function(callback) oldrainbow = callback end,
+	HoverText = "Reverts to old rainbow"
+})
+GUISettings.CreateToggle({
+	Name = "Show Tooltips", 
+	Function = function(callback) GuiLibrary.ToggleTooltips = callback end,
+	Default = true,
+	HoverText = "Toggles visibility of these"
+})
+local GUIRescaleToggle = GUISettings.CreateToggle({
+	Name = "Rescale", 
+	Function = function(callback) 
+		task.spawn(function()
+			GuiLibrary.MainRescale.Scale = (callback and math.clamp(gameCamera.ViewportSize.X / 1920, 0.5, 1) or 0.99)
+			task.wait(0.01)
+			GuiLibrary.MainRescale.Scale = (callback and math.clamp(gameCamera.ViewportSize.X / 1920, 0.5, 1) or 1)
+		end)
+	end,
+	Default = true,
+	HoverText = "Rescales the GUI"
+})
+gameCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+	if GUIRescaleToggle.Enabled then
+		GuiLibrary.MainRescale.Scale = math.clamp(gameCamera.ViewportSize.X / 1920, 0.5, 1)
+	end
+end)
+GUISettings.CreateToggle({
+	Name = "Notifications", 
+	Function = function(callback) 
+		GuiLibrary.Notifications = callback 
+	end,
+	Default = true,
+	HoverText = "Shows notifications"
+})
+local ToggleNotifications
+ToggleNotifications = GUISettings.CreateToggle({
+	Name = "Toggle Alert", 
+	Function = function(callback) GuiLibrary.ToggleNotifications = callback end,
+	Default = true,
+	HoverText = "Notifies you if a module is enabled/disabled."
+})
+ToggleNotifications.Object.BackgroundTransparency = 0
+ToggleNotifications.Object.BorderSizePixel = 0
+ToggleNotifications.Object.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+GUISettings.CreateSlider({
+	Name = "Rainbow Speed",
+	Function = function(val)
+		GuiLibrary.RainbowSpeed = math.max((val / 10) - 0.4, 0)
+	end,
+	Min = 1,
+	Max = 100,
+	Default = 10
+})
+
+local GUIbind = GUI.CreateGUIBind()
+local teleportConnection = playersService.LocalPlayer.OnTeleport:Connect(function(State)
+    if (not teleportedServers) and (not shared.VapeIndependent) then
+		teleportedServers = true
+		local teleportScript = [[
+			shared.VapeSwitchServers = true 
+			if shared.VapeDeveloper then 
+				loadstring(readfile("vape/NewMainScript.lua"))() 
+			else 
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/NewMainScript.lua", true))() 
+			end
+		]]
+		if shared.VapeDeveloper then
+			teleportScript = 'shared.VapeDeveloper = true\n'..teleportScript
+		end
+		if shared.VapePrivate then
+			teleportScript = 'shared.VapePrivate = true\n'..teleportScript
+		end
+		if shared.VapeCustomProfile then 
+			teleportScript = "shared.VapeCustomProfile = '"..shared.VapeCustomProfile.."'\n"..teleportScript
+		end
+		GuiLibrary.SaveSettings()
+		queueonteleport(teleportScript)
+    end
+end)
+
+GuiLibrary.SelfDestruct = function()
+	task.spawn(function()
+		coroutine.close(saveSettingsLoop)
+	end)
+
+	if vapeInjected then 
+		GuiLibrary.SaveSettings()
+	end
+	vapeInjected = false
+	game:GetService("UserInputService").OverrideMouseIconBehavior = Enum.OverrideMouseIconBehavior.None
+
+	for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do
+		if (v.Type == "Button" or v.Type == "OptionsButton") and v.Api.Enabled then
+			v.Api.ToggleButton(false)
+		end
+	end
+
+	for i,v in pairs(TextGUIConnections) do 
+		v:Disconnect()
+	end
+	for i,v in pairs(TextGUIObjects) do 
+		for i2,v2 in pairs(v) do 
+			v2.Visible = false
+			v2:Destroy()
+			v[i2] = nil
+		end
+	end
+
+	GuiLibrary.SelfDestructEvent:Fire()
+	shared.VapeExecuted = nil
+	shared.VapePrivate = nil
+	shared.VapeFullyLoaded = nil
+	shared.VapeSwitchServers = nil
+	shared.GuiLibrary = nil
+	shared.VapeIndependent = nil
+	shared.VapeManualLoad = nil
+	shared.CustomSaveVape = nil
+	GuiLibrary.KeyInputHandler:Disconnect()
+	GuiLibrary.KeyInputHandler2:Disconnect()
+	if MiddleClickInput then
+		MiddleClickInput:Disconnect()
+	end
+	teleportConnection:Disconnect()
+	GuiLibrary.MainGui:Destroy()
+	game:GetService("RunService"):SetRobloxGuiFocused(false)	
+end
+
+GeneralSettings.CreateButton2({
+	Name = "RESET CURRENT PROFILE", 
+	Function = function()
+		local vapePrivateCheck = shared.VapePrivate
+		GuiLibrary.SelfDestruct()
+		if delfile then
+			delfile(baseDirectory.."Profiles/"..(GuiLibrary.CurrentProfile ~= "default" and GuiLibrary.CurrentProfile or "")..(shared.CustomSaveVape or game.PlaceId)..".vapeprofile.txt")
+		else
+			writefile(baseDirectory.."Profiles/"..(GuiLibrary.CurrentProfile ~= "default" and GuiLibrary.CurrentProfile or "")..(shared.CustomSaveVape or game.PlaceId)..".vapeprofile.txt", "")
+		end
+		shared.VapeSwitchServers = true
+		shared.VapeOpenGui = true
+		shared.VapePrivate = vapePrivateCheck
+		loadstring(vapeGithubRequest("NewMainScript.lua"))()
+	end
+})
+GUISettings.CreateButton2({
+	Name = "RESET GUI POSITIONS", 
+	Function = function()
+		for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do
+			if (v.Type == "Window" or v.Type == "CustomWindow") then
+				v.Object.Position = (i == "GUIWindow" and UDim2.new(0, 6, 0, 6) or UDim2.new(0, 223, 0, 6))
+			end
+		end
+	end
+})
+GUISettings.CreateButton2({
+	Name = "SORT GUI", 
+	Function = function()
+		local sorttable = {}
+		local movedown = false
+		local sortordertable = {
+			GUIWindow = 1,
+			CombatWindow = 2,
+			BlatantWindow = 3,
+			RenderWindow = 4,
+			UtilityWindow = 5,
+			WorldWindow = 6,
+			FriendsWindow = 7,
+			TargetsWindow = 8,
+			ProfilesWindow = 9,
+			["Text GUICustomWindow"] = 10,
+			TargetInfoCustomWindow = 11,
+			RadarCustomWindow = 12,
+		}
+		local storedpos = {}
+		local num = 6
+		for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do
+			local obj = GuiLibrary.ObjectsThatCanBeSaved[i]
+			if obj then
+				if v.Type == "Window" and v.Object.Visible then
+					local sortordernum = (sortordertable[i] or #sorttable)
+					sorttable[sortordernum] = v.Object
+				end
+			end
+		end
+		for i2,v2 in pairs(sorttable) do
+			if num > 1697 then
+				movedown = true
+				num = 6
+			end
+			v2.Position = UDim2.new(0, num, 0, (movedown and (storedpos[num] and (storedpos[num] + 9) or 400) or 39))
+			if not storedpos[num] then
+				storedpos[num] = v2.AbsoluteSize.Y
+				if v2.Name == "MainWindow" then
+					storedpos[num] = 400
+				end
+			end
+			num = num + 223
+		end
+	end
+})
+GeneralSettings.CreateButton2({
+	Name = "UNINJECT",
+	Function = GuiLibrary.SelfDestruct
+})
+
+local function loadVape()
+	if not shared.VapeIndependent then
+		loadstring(vapeGithubRequest("Universal.lua"))()
+		if isfile("vape/CustomModules/"..game.PlaceId..".lua") then
+			loadstring(readfile("vape/CustomModules/"..game.PlaceId..".lua"))()
+		else
+			if not shared.VapeDeveloper then
+				local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/CustomModules/"..game.PlaceId..".lua") end)
+				if suc and publicrepo and publicrepo ~= "404: Not Found" then
+					writefile("vape/CustomModules/"..game.PlaceId..".lua", "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..publicrepo)
+					loadstring(readfile("vape/CustomModules/"..game.PlaceId..".lua"))()
+				end
+			end
+		end
+		if shared.VapePrivate then
+			if isfile("vapeprivate/CustomModules/"..game.PlaceId..".lua") then
+				loadstring(readfile("vapeprivate/CustomModules/"..game.PlaceId..".lua"))()
+			end	
+		end
+	else
+		repeat task.wait() until shared.VapeManualLoad
+	end
+	if #ProfilesTextList.ObjectList == 0 then
+		table.insert(ProfilesTextList.ObjectList, "default")
+		ProfilesTextList.RefreshValues(ProfilesTextList.ObjectList)
+	end
+	GuiLibrary.LoadSettings(shared.VapeCustomProfile)
+	local profiles = {}
+	for i,v in pairs(GuiLibrary.Profiles) do 
+		table.insert(profiles, i)
+	end
+	table.sort(profiles, function(a, b) return b == "default" and true or a:lower() < b:lower() end)
+	ProfilesTextList.RefreshValues(profiles)
+	GUIbind.Reload()
+	TextGUIUpdate()
+	GuiLibrary.UpdateUI(GUIColorSlider.Hue, GUIColorSlider.Sat, GUIColorSlider.Value, true)
+	if not shared.VapeSwitchServers then
+		if BlatantModeToggle.Enabled then
+			pcall(function()
+				local frame = GuiLibrary.CreateNotification("Blatant Enabled", "Vape is now in Blatant Mode.", 5.5, "assets/WarningNotification.png")
+				frame.Frame.Frame.ImageColor3 = Color3.fromRGB(236, 129, 44)
+			end)
+		end
+		GuiLibrary.LoadedAnimation(welcomeMessage.Enabled)
+	else
+		shared.VapeSwitchServers = nil
+	end
+	if shared.VapeOpenGui then
+		GuiLibrary.MainGui.ScaledGui.ClickGui.Visible = true
+		game:GetService("RunService"):SetRobloxGuiFocused(GuiLibrary.MainBlur.Size ~= 0) 
+		shared.VapeOpenGui = nil
+	end
+
+	coroutine.resume(saveSettingsLoop)
+	shared.VapeFullyLoaded = true
+end
+
+if shared.VapeIndependent then
+	task.spawn(loadVape)
+	shared.VapeFullyLoaded = true
+	return GuiLibrary
+else
+	loadVape()
+end  end
+}
+
+Tab:Button{
+	Name = "Button",
+	Description = nil,
+	Callback = function() 
+    local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/ICECREAMPROGAMER7473/githubfan3758329373475293859785728482/main/MainGuiLibary.lua"))()
+local getasset = getsynasset or getcustomasset
+local ScreenGuitwo = game:GetService("CoreGui").RektskyNotificationGui
+local lplr = game:GetService("Players").LocalPlayer
+local cam = game:GetService("Workspace").CurrentCamera
+function runcode(func)
+    func()
+end
+
+lib:CreateWindow()
+local Tabs = {
+    ["Combat"] = lib:CreateTab("Combat",Color3.fromRGB(252,80,68),"combat"),
+    ["Blatant"] = lib:CreateTab("Blatant",Color3.fromRGB(255,148,36),"movement"),
+    ["Render"] = lib:CreateTab("Render",Color3.fromRGB(59,170,222),"render"),
+    ["Utility"] = lib:CreateTab("Utility",Color3.fromRGB(83,214,110),"player"),
+    ["World"] = lib:CreateTab("World",Color3.fromRGB(52,28,228),"world"),
+    ["Exploits"] = lib:CreateTab("Exploits",Color3.fromRGB(157,39,41),"exploit")
+}
+local KnitClient = debug.getupvalue(require(lplr.PlayerScripts.TS.knit).setup, 6)
+local Client = require(game:GetService("ReplicatedStorage").TS.remotes).default.Client
+local cam = game:GetService("Workspace").CurrentCamera
+local uis = game:GetService("UserInputService")
+function getremote(tab)
+    for i,v in pairs(tab) do
+        if v == "Client" then
+            return tab[i + 1]
+        end
+    end
+    return ""
+end
+
+
+
+local bedwars = {
+    ["Projectile"] = Client:Get(getremote(debug.getconstants(debug.getupvalues(getmetatable(KnitClient.Controllers.ProjectileController)["launchProjectileWithValues"])[2]))),
+	["KnockbackTable"] = debug.getupvalue(require(game:GetService("ReplicatedStorage").TS.damage["knockback-util"]).KnockbackUtil.calculateKnockbackVelocity, 1),
+	["CombatConstant"] = require(game:GetService("ReplicatedStorage").TS.combat["combat-constant"]).CombatConstant,
+	["SprintController"] = KnitClient.Controllers.SprintController,
+	["ShopItems"] = debug.getupvalue(require(game:GetService("ReplicatedStorage").TS.games.bedwars.shop["bedwars-shop"]).BedwarsShop.getShopItem, 2),
+	["PickupRemote"] = getremote(debug.getconstants(getmetatable(KnitClient.Controllers.ItemDropController).checkForPickup)),
+	["DamageController"] = require(lplr.PlayerScripts.TS.controllers.global.damage["damage-controller"]).DamageController,
+	["DamageTypes"] = require(game:GetService("ReplicatedStorage").TS.damage["damage-type"]).DamageType,
+    ["SwordRemote"] = getremote(debug.getconstants((KnitClient.Controllers.SwordController).attackEntity)),
+    ["PingController"] = require(lplr.PlayerScripts.TS.controllers.game.ping["ping-controller"]).PingController,
+    ["DamageIndicator"] = KnitClient.Controllers.DamageIndicatorController.spawnDamageIndicator,
+    ["ClientHandlerStore"] = require(lplr.PlayerScripts.TS.ui.store).ClientStore,
+    ["SwordController"] = KnitClient.Controllers.SwordController,
+    ["BlockCPSConstants"] = require(game:GetService("ReplicatedStorage").TS["shared-constants"]).CpsConstants,
+    ["BalloonController"] = KnitClient.Controllers.BalloonController,
+    ["ViewmodelController"] = KnitClient.Controllers.ViewmodelController,
+}
+function getQueueType()
+    local state = bedwars["ClientHandlerStore"]:getState()
+    return state.Game.queueType or "bedwars_test"
+end
+function CreateNotification(title,text,delay2)
+    spawn(function()
+        if ScreenGuitwo:FindFirstChild("Background") then ScreenGuitwo:FindFirstChild("Background"):Destroy() end
+        local frame = Instance.new("Frame")
+        frame.Size = UDim2.new(0, 100, 0, 115)
+        frame.Position = UDim2.new(0.5, 0, 0, -115)
+        frame.BorderSizePixel = 0
+        frame.AnchorPoint = Vector2.new(0.5, 0)
+        frame.BackgroundTransparency = 0.5
+        frame.BackgroundColor3 = Color3.new(0, 0, 0)
+        frame.Name = "Background"
+        frame.Parent = ScreenGuitwo
+        local frameborder = Instance.new("Frame")
+        frameborder.Size = UDim2.new(1, 0, 0, 8)
+        frameborder.BorderSizePixel = 0
+        frameborder.BackgroundColor3 = Color3.fromRGB(205, 64, 78)
+        frameborder.Parent = frame
+        local frametitle = Instance.new("TextLabel")
+        frametitle.Font = Enum.Font.SourceSansLight
+        frametitle.BackgroundTransparency = 1
+        frametitle.Position = UDim2.new(0, 0, 0, 30)
+        frametitle.TextColor3 = Color3.fromRGB(205, 64, 78)
+        frametitle.Size = UDim2.new(1, 0, 0, 28)
+        frametitle.Text = "          "..title
+        frametitle.TextSize = 24
+        frametitle.TextXAlignment = Enum.TextXAlignment.Left
+        frametitle.TextYAlignment = Enum.TextYAlignment.Top
+        frametitle.Parent = frame
+        local frametext = Instance.new("TextLabel")
+        frametext.Font = Enum.Font.SourceSansLight
+        frametext.BackgroundTransparency = 1
+        frametext.Position = UDim2.new(0, 0, 0, 68)
+        frametext.TextColor3 = Color3.new(1, 1, 1)
+        frametext.Size = UDim2.new(1, 0, 0, 28)
+        frametext.Text = "          "..text
+        frametext.TextSize = 24
+        frametext.TextXAlignment = Enum.TextXAlignment.Left
+        frametext.TextYAlignment = Enum.TextYAlignment.Top
+        frametext.Parent = frame
+        local textsize = game:GetService("TextService"):GetTextSize(frametitle.Text, frametitle.TextSize, frametitle.Font, Vector2.new(100000, 100000))
+        local textsize2 = game:GetService("TextService"):GetTextSize(frametext.Text, frametext.TextSize, frametext.Font, Vector2.new(100000, 100000))
+        if textsize2.X > textsize.X then textsize = textsize2 end
+        frame.Size = UDim2.new(0, textsize.X + 38, 0, 115)
+        pcall(function()
+            frame:TweenPosition(UDim2.new(0.5, 0, 0, 20), Enum.EasingDirection.InOut, Enum.EasingStyle.Quad, 0.15)
+            game:GetService("Debris"):AddItem(frame, delay2 + 0.15)
+        end)
+    end)
+end
+function IsAlive(plr)
+    plr = plr or lplr
+    if not plr.Character then return false end
+    if not plr.Character:FindFirstChild("Head") then return false end
+    if not plr.Character:FindFirstChild("Humanoid") then return false end
+    if plr.Character:FindFirstChild("Humanoid").Health < 0.11 then return false end
+    return true
+end
+function CanWalk(plr)
+    plr = plr or lplr
+    if not plr.Character then return false end
+    if not plr.Character:FindFirstChild("Humanoid") then return false end
+    local state = plr.Character:FindFirstChild("Humanoid"):GetState()
+    if state == Enum.HumanoidStateType.Dead then
+        return false
+    end
+    if state == Enum.HumanoidStateType.Ragdoll then
+        return false
+    end
+    return true
+end
+function GetMatchState()
+	return bedwars["ClientHandlerStore"]:getState().Game.matchState
+end
+ 
+runcode(function()
+    local BedwarsSwords = require(game:GetService("ReplicatedStorage").TS.games.bedwars["bedwars-swords"]).BedwarsSwords
+    function hashFunc(vec) 
+        return {value = vec}
+    end
+    local function GetInventory(plr)
+        if not plr then 
+            return {items = {}, armor = {}}
+        end
+
+        local suc, ret = pcall(function() 
+            return require(game:GetService("ReplicatedStorage").TS.inventory["inventory-util"]).InventoryUtil.getInventory(plr)
+        end)
+
+        if not suc then 
+            return {items = {}, armor = {}}
+        end
+
+        if plr.Character and plr.Character:FindFirstChild("InventoryFolder") then 
+            local invFolder = plr.Character:FindFirstChild("InventoryFolder").Value
+            if not invFolder then return ret end
+            for i,v in next, ret do 
+                for i2, v2 in next, v do 
+                    if typeof(v2) == 'table' and v2.itemType then
+                        v2.instance = invFolder:FindFirstChild(v2.itemType)
+                    end
+                end
+                if typeof(v) == 'table' and v.itemType then
+                    v.instance = invFolder:FindFirstChild(v.itemType)
+                end
+            end
+        end
+
+        return ret
+    end
+    local function getSword()
+        local highest, returning = -9e9, nil
+        for i,v in next, GetInventory(lplr).items do 
+            local power = table.find(BedwarsSwords, v.itemType)
+            if not power then continue end
+            if power > highest then 
+                returning = v
+                highest = power
+            end
+        end
+        return returning
+    end
+    local Anims = {
+        ["Slow"] = {
+            {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(220), math.rad(100), math.rad(100)),Time = 0.25},
+            {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.25}
+        },
+        ["Weird"] = {
+            {CFrame = CFrame.new(0, 0, 1.5) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)),Time = 0.25},
+            {CFrame = CFrame.new(0, 0, -1.5) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)),Time = 0.25},
+            {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.25}
+        },
+        ["Self"] = {
+            {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(-90), math.rad(90), math.rad(90)),Time = 0.25},
+            {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.25}
+        },
+        ["Butcher"] = {
+            {CFrame = CFrame.new(0, -1, 0) * CFrame.Angles(math.rad(0), math.rad(90), math.rad(0)),Time = 0.3},
+            {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.3}
+        },
+        ["VerticalSpin"] = {
+			{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(-90), math.rad(8), math.rad(5)), Time = 0.25},
+			{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(180), math.rad(3), math.rad(13)), Time = 0.25},
+			{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(90), math.rad(-5), math.rad(8)), Time = 0.25},
+			{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.25}
+		}
+    }
+    local VMAnim = false
+    local HitRemote = Client:Get(bedwars["SwordRemote"])
+    local origC0 = game:GetService("ReplicatedStorage").Assets.Viewmodel.RightHand.RightWrist.C0
+    local DistVal = {["Value"] = 21}
+    local Tick = {["Value"] = 0.03}
+    local AttackAnim = {["Enabled"] = true}
+    local CurrentAnim = {["Value"] = "Slow"}
+    local Enabled = false
+    local KillAura = Tabs["Combat"]:CreateToggle({
+        ["Name"] = "Aura",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    repeat task.wait() until GetMatchState() ~= 0
+                    if not Enabled then return end
+                    while task.wait(Tick["Value"]) do
+                        if not Enabled then return end
+                        for i,v in pairs(game:GetService("Players"):GetChildren()) do
+                            if v.Team ~= lplr.Team and IsAlive(v) and IsAlive(lplr) and not v.Character:FindFirstChildOfClass("ForceField") then
+                                local mag = (v.Character:FindFirstChild("HumanoidRootPart").Position - lplr.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude
+                                if mag < DistVal["Value"] then
+                                    local sword = getSword()
+                                    spawn(function()
+                                        if AttackAnim["Enabled"] then
+                                            local anim = Instance.new("Animation")
+                                            anim.AnimationId = "rbxassetid://4947108314"
+                                            local loader = lplr.Character:FindFirstChild("Humanoid"):FindFirstChild("Animator")
+                                            loader:LoadAnimation(anim):Play()
+                                            if not VMAnim then
+                                                VMAnim = true
+                                                for i,v in pairs(Anims[CurrentAnim["Value"]]) do
+                                                    game:GetService("TweenService"):Create(cam.Viewmodel.RightHand.RightWrist,TweenInfo.new(v.Time),{C0 = origC0 * v.CFrame}):Play()
+                                                    task.wait(v.Time-0.01)
+                                                end
+                                                VMAnim = false
+                                            end
+                                        end
+                                    end)
+                                    if sword ~= nil then
+                                        bedwars["SwordController"].lastAttack = game:GetService("Workspace"):GetServerTimeNow() - 0.11
+                                        HitRemote:SendToServer({
+                                            ["weapon"] = sword.tool,
+                                            ["entityInstance"] = v.Character,
+                                            ["validate"] = {
+                                                ["raycast"] = {
+                                                    ["cameraPosition"] = hashFunc(cam.CFrame.Position), 
+                                                    ["cursorDirection"] = hashFunc(Ray.new(cam.CFrame.Position, v.Character:FindFirstChild("HumanoidRootPart").Position).Unit.Direction)
+                                                },
+                                                ["targetPosition"] = hashFunc(v.Character:FindFirstChild("HumanoidRootPart").Position),
+                                                ["selfPosition"] = hashFunc(lplr.Character:FindFirstChild("HumanoidRootPart").Position + ((lplr.Character:FindFirstChild("HumanoidRootPart").Position - v.Character:FindFirstChild("HumanoidRootPart").Position).magnitude > 14 and (CFrame.lookAt(lplr.Character:FindFirstChild("HumanoidRootPart").Position, v.Character:FindFirstChild("HumanoidRootPart").Position).LookVector * 4) or Vector3.new(0, 0, 0))),
+                                            }, 
+                                            ["chargedAttack"] = {["chargeRatio"] = 1},
+                                        })
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    })
+    DistVal = KillAura:CreateSlider({
+        ["Name"] = "Range",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 30,
+        ["Default"] = 18,
+        ["Round"] = 1
+    })
+    Tick = KillAura:CreateSlider({
+        ["Name"] = "Slowness",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 1,
+        ["Default"] = 0.38
+    })
+    CurrentAnim = KillAura:CreateDropDown({
+        ["Name"] = "VMAnimation",
+        ["Function"] = function(v) 
+            CurrentAnim["Value"] = v
+        end,
+        ["List"] = {"Slow","VerticalSpin"},
+        ["Default"] = "Slow"
+    })
+    AttackAnim = KillAura:CreateOptionTog({
+        ["Name"] = "Animation",
+        ["Default"] = true,
+        ["Func"] = function(v)
+            AttackAnim["Enabled"] = v
+        end
+    })
+end)
+
+local function findplayers(arg)
+	for i,v in pairs(game:GetService("Players"):GetChildren()) do if v.Name:lower():sub(1, arg:len()) == arg:lower() then return v end end
+	return nil
+end
+
+local PlayerCrasher = {["Enabled"] = false}
+local PlayerCrasherPower = {["Value"] = 50}
+local PlayerCrasherDelay = {["Value"] = 0}
+local targetedplayer
+local RunService = game:GetService("RunService")
+runcode(function()
+    local Enabled = false
+    local Crash = Tabs["Exploits"]:CreateToggle({
+        ["Name"] = "PartialCrasher",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+            getgenv().FunnyCrash = true
+
+            for i,v in pairs(game.Players:GetChildren()) do
+                if v.Name == game.Players.LocalPlayer.Name then
+                    else
+                        local args = {[1] = {["player"] = v}}
+                        game:GetService("ReplicatedStorage"):FindFirstChild("events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events").inviteToParty:FireServer(unpack(args))
+                    end
+                end
+
+            for i,v in pairs(game:GetService("ReplicatedStorage"):GetDescendants()) do
+                if (v.Name:find("arty") or v.Name:find("otification"))and v:IsA("RemoteEvent") then
+                    for i2,v2 in pairs(getconnections(v.OnClientEvent)) do
+                        v2:Disable()
+                    end
+                end
+            end
+
+            spawn(function()
+                while FunnyCrash == true do
+                    for i = 135, 9999999  do
+                    local args = {[1] = {["queueType"] = "bedwars_to1"}}
+                    game:GetService("ReplicatedStorage"):FindFirstChild("events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events").joinQueue:FireServer(unpack(args))
+                    game:GetService("ReplicatedStorage"):FindFirstChild("events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events").leaveQueue:FireServer()
+                    wait()
+                    end
+                end
+            end)
+            else
+            FunnyCrash = false
+            end
+        end
+    })
+end)
+
+ 
+runcode(function()
+    local Enabled = false
+    local Sprint = Tabs["Combat"]:CreateToggle({
+        ["Name"] = "Sprint",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    repeat
+                        task.wait()
+                        if not bedwars["SprintController"].sprinting then
+                            bedwars["SprintController"]:startSprinting()
+                        end
+                    until not Enabled
+                end)
+            else
+                bedwars["SprintController"]:stopSprinting()
+            end
+        end
+    })
+end)
+ 
+runcode(function()
+    local Value = {["Value"] = 18}
+    local Enabled = false
+    local Reach = Tabs["Combat"]:CreateToggle({
+        ["Name"] = "Reach",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = Value["Value"] - 0.001
+            else
+                bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = 14.4
+            end
+        end
+    })
+    Value = Reach:CreateSlider({
+        ["Name"] = "Amount",
+        ["Function"] = function() end,
+        ["Min"] = 1,
+        ["Max"] = 25,
+        ["Default"] = 25,
+    })
+end)
+ 
+runcode(function()
+    local Value = {["Value"] = 0}
+    local Enabled = false
+    local Velocity = Tabs["Combat"]:CreateToggle({
+        ["Name"] = "Velocity",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                bedwars["KnockbackTable"]["kbDirectionStrength"] = 0
+				bedwars["KnockbackTable"]["kbUpwardStrength"] = 0
+            else
+                bedwars["KnockbackTable"]["kbDirectionStrength"] = 100
+				bedwars["KnockbackTable"]["kbUpwardStrength"] = 100
+            end
+        end
+    })
+end)
+ 
+runcode(function()
+    local Enabled = false
+    local NoFall = Tabs["Combat"]:CreateToggle({
+        ["Name"] = "NoFall",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    repeat
+                        task.wait(0.5)
+                        Client:Get("GroundHit"):SendToServer()
+                    until not Enabled
+                end)
+            end
+        end
+    })
+end)
+ 
+ runcode(function()
+    local Enabled = false
+    local NoFall = Tabs["World"]:CreateToggle({
+        ["Name"] = "Lighting",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                game.Lighting.Ambient = Color3.fromRGB(170, 0, 255)
+			    local tint = Instance.new("ColorCorrectionEffect", game.Lighting)
+			    tint.TintColor = Color3.fromRGB(225, 200, 255)
+			    local newsky = Instance.new("Sky", game.Lighting)
+			    newsky.SkyboxBk = "rbxassetid://8539982183"
+			    newsky.SkyboxDn = "rbxassetid://8539981943"
+			    newsky.SkyboxFt = "rbxassetid://8539981721"
+			    newsky.SkyboxLf = "rbxassetid://8539981424"
+			    newsky.SkyboxRt = "rbxassetid://8539980766"
+			    newsky.SkyboxUp = "rbxassetid://8539981085"
+			    newsky.MoonAngularSize = 0
+			    newsky.SunAngularSize = 0
+			    newsky.StarCount = 3e3
+			    table.insert(TempAssets, newsky)
+			    table.insert(TempAssets, tint)
+                else
+                print("Disabled next round")
+            end
+        end
+    })
+end)
+ 
+runcode(function()
+    local Connection
+    local FOV = {["Value"] = 120}
+    local Enabled = false
+    local FOVChanger = Tabs["Render"]:CreateToggle({
+        ["Name"] = "FOVChanger",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                cam.FieldOfView = FOV["Value"]
+                Connection = cam:GetPropertyChangedSignal("FieldOfView"):Connect(function()
+                    cam.FieldOfView = FOV["Value"]
+                end)
+            else
+                Connection:Disconnect()
+                cam.FieldOfView = 80
+            end
+        end
+    })
+    FOV = FOVChanger:CreateSlider({
+        ["Name"] = "FOV",
+        ["Function"] = function() end,
+        ["Min"] = 30,
+        ["Max"] = 120,
+        ["Default"] = 100,
+        ["Round"] = 1
+    })
+end)
+
+runcode(function()
+    local Enabled = false
+    local TexturePack = Tabs["Render"]:CreateToggle({
+        ["Name"] = "TexturePack",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                local obj = game:GetObjects("rbxassetid://11144793662")[1]
+                obj.Name = "Part"
+                obj.Parent = game:GetService("ReplicatedStorage")
+                for i,v in pairs(obj:GetChildren()) do
+                    if string.lower(v.Name):find("cross") then
+                        for i2,b in pairs(v:GetChildren()) do
+                            b:Destroy()
+                        end
+                    end
+                end
+                shared.con = game:GetService("ReplicatedStorage").ChildAdded:Connect(function(v)
+                    for i,x in pairs(obj:GetChildren()) do
+                        x:Clone().Parent = v
+                    end
+                    shared.con:Disconnect()
+                end)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/eLeCtRaDoMiNuS/milkwareclient/main/texture.lua"))()
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Messages = {"Pow!","Thump!","Wham!","Hit!","Smack!","Bang!","Pop!","Boom!"}
+    local old
+    local Enabled = false
+    local FunnyIndicator = Tabs["Render"]:CreateToggle({
+        ["Name"] = "MeteorIndicator",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                old = debug.getupvalue(bedwars["DamageIndicator"],10,{Create})
+                debug.setupvalue(bedwars["DamageIndicator"],10,{
+                    Create = function(self,obj,...)
+                        spawn(function()
+                            pcall(function()
+                                obj.Parent.Text = Messages[math.random(1,#Messages)]
+                                obj.Parent.TextColor3 =  Color3.fromHSV(tick()%5/5,1,1)
+                            end)
+                        end)
+                        return game:GetService("TweenService"):Create(obj,...)
+                    end
+                })
+            else
+                debug.setupvalue(bedwars["DamageIndicator"],10,{
+                    Create = old
+                })
+                old = nil
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Enabled = false
+    function texturemainfunction()
+        local blocks = game:GetService("CollectionService"):GetTagged("block")
+        for i,v in pairs(blocks) do
+            if v:GetAttribute("PlacedByUserId") == 0 then
+                v.Material = (Enabled and Enum.Material.SmoothPlastic or (v.Name:find("glass") and enum.Material.SmoothPlastic or Enum.Material.Fabric))
+                for i2,v2 in pairs(v:GetChildren()) do
+                    if v2:IsA("Texture") then
+                        v2.Transparency = (Enabled and 1) or 0
+                    end
+                end
+            end
+        end
+    end
+    local FPSBoost = Tabs["World"]:CreateToggle({
+        ["Name"] = "FPSBoost",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                texturemainfunction()
+            else
+                texturemainfunction()
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Enabled = false
+    local CameraFix = Tabs["Render"]:CreateToggle({
+        ["Name"] = "CameraFix",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    repeat
+                        task.wait()
+                        UserSettings():GetService("UserGameSettings").RotationType = ((cam.CFrame.Position - cam.Focus.Position).Magnitude <= 0.5 and Enum.RotationType.CameraRelative or Enum.RotationType.MovementRelative)
+                    until not Enabled
+                end)
+            end
+        end
+    })
+end)
+ 
+runcode(function()
+    local Connection
+    local Enabled = false
+    local Smaller = {["Value"] = 3}
+    local SmallItems = Tabs["Render"]:CreateToggle({
+        ["Name"] = "SmallWeapons",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                Connection = cam.Viewmodel.ChildAdded:Connect(function(v)
+                    if v:FindFirstChild("Handle") then
+                        pcall(function()
+                            v:FindFirstChild("Handle").Size = v:FindFirstChild("Handle").Size / tostring(Smaller["Value"])
+                        end)
+                    end
+                end)
+            else
+                Connection:Disconnect()
+            end
+        end
+    })
+    Smaller = SmallItems:CreateSlider({
+        ["Name"] = "Value",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 10,
+        ["Default"] = 3,
+        ["Round"] = 1
+    })
+end)
+ 
+runcode(function()
+    local SpeedVal = {["Value"] = 0.11}
+    local Enabled = false
+    local Mode = {["Value"] = "CFrame"}
+    local Speed = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "Speed",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    repeat task.wait() until GetMatchState() ~= 0
+                    while task.wait() do
+                        if not Enabled then return end
+                        if IsAlive(lplr) and isnetworkowner(lplr.Character:FindFirstChild("HumanoidRootPart")) then
+                            local hum = lplr.Character:FindFirstChild("Humanoid")
+                            if hum.MoveDirection.Magnitude > 0 then
+                                lplr.Character:TranslateBy(hum.MoveDirection * SpeedVal["Value"])
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    })
+    SpeedVal = Speed:CreateSlider({
+        ["Name"] = "Speed",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 0.1,
+        ["Default"] = 0.08,
+    })
+end)
+ 
+runcode(function()
+    local Connection
+    local Connection2
+    local flydown = false
+    local flyup = false
+    local usedballoon = false
+    local usedfireball = false
+    local olddeflate
+    local velo
+    local Enabled = false
+    local Mode = {["Value"] = "Normal", "Long"}
+    local Fly = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "Fly",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    if lplr.Character:FindFirstChild("InventoryFolder").Value:FindFirstChild("balloon") then
+                        usedballoon = true
+                        olddeflate = bedwars["BalloonController"].deflateBalloon
+                        bedwars["BalloonController"].inflateBalloon()
+                        bedwars["BalloonController"].deflateBalloon = function() end
+                    end
+                    
+                    velo = Instance.new("BodyVelocity")
+                    velo.MaxForce = Vector3.new(0,9e9,0)
+                    velo.Parent = lplr.Character:FindFirstChild("HumanoidRootPart")
+                    Connection = uis.InputBegan:Connect(function(input)
+                        if input.KeyCode == Enum.KeyCode.Space then
+                            flyup = true
+                        end
+                        if input.KeyCode == Enum.KeyCode.LeftShift then
+                            flydown = true
+                        end
+                    end)
+                    Connection2 = uis.InputEnded:Connect(function(input)
+                        if input.KeyCode == Enum.KeyCode.Space then
+                            flyup = false
+                        end
+                        if input.KeyCode == Enum.KeyCode.LeftShift then
+                            flydown = false
+                        end
+                    end)
+                    spawn(function()
+                        while task.wait() do
+                            if not Enabled then return end
+                            if Mode["Value"] == "Long" then
+                                for i = 1,7 do
+                                    task.wait()
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,i*1.25+(flyup and 40 or 0)+(flydown and -40 or 0),0)
+                                end
+                                for i = 1,7 do
+                                    task.wait()
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,-i*1+(flyup and 40 or 0)+(flydown and -40 or 0),0)
+                                end
+                            elseif Mode["Value"] == "FunnyOld" then
+                                for i = 1,15 do
+                                    task.wait(0.01)
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,i*1,0)
+                                end
+                            elseif Mode["Value"] == "Funny" then
+                                for i = 2,30,2 do
+                                    task.wait(0.01)
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,25 + i,0)
+                                end
+                            elseif Mode["Value"] == "Moonsoon" then
+                                for i = 1,10 do
+                                    task.wait()
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,-i*0.7,0)
+                                end
+                            elseif Mode["Value"] == "Bounce" then
+                                for i = 1,15 do
+                                    task.wait()
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,i*1.25+(flyup and 40 or 0)+(flydown and -40 or 0),0)
+                                end
+                                for i = 1,15 do
+                                    task.wait()
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,-i*1+(flyup and 40 or 0)+(flydown and -40 or 0),0)
+                                end
+                            elseif Mode["Value"] == "Bounce2" then
+                                for i = 1,15 do
+                                    task.wait()
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,i*1.25+(flyup and 40 or 0)+(flydown and -40 or 0),0)
+                                end
+                                velo.Velocity = Vector3.new(0,0,0)
+                                task.wait(0.05)
+                                for i = 1,15 do
+                                    task.wait()
+                                    if not Enabled then return end
+                                    velo.Velocity = Vector3.new(0,-i*1+(flyup and 40 or 0)+(flydown and -40 or 0),0)
+                                end
+                                task.wait(0.05)
+                                velo.Velocity = Vector3.new(0,0,0)
+                            else
+                                Mode["Value"] = "Long"
+                                lib["ToggleFuncs"]["Fly"](true)
+                                task.wait(0.1)
+                                lib["ToggleFuncs"]["Fly"](true)
+                            end
+                        end
+                    end)
+                end)
+            else
+                velo:Destroy()
+                Connection:Disconnect()
+                Connection2:Disconnect()
+                flyup = false
+                flydown = false
+                if usedballoon == true then
+                    usedballoon = false
+                    bedwars["BalloonController"].deflateBalloon = olddeflate
+                    bedwars["BalloonController"].deflateBalloon()
+                    olddeflate = nil
+                end
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Expand = {["Value"] = 1}
+    local function getwool()
+        for i,v in pairs(lplr.Character:FindFirstChild("InventoryFolder").Value:GetChildren()) do
+            if string.lower(v.Name):find("wool") then
+                return {
+                    Obj = v,
+                    Amount = v:GetAttribute("Amount")
+                }
+            end
+        end
+        return nil
+    end
+    local function getwoolamount()
+        local value = 0
+        for i,v in pairs(lplr.Character:FindFirstChild("InventoryFolder").Value:GetChildren()) do
+            if string.lower(v.Name):find("wool") then
+                value = value + v:GetAttribute("Amount")
+            end
+        end
+        return value
+    end
+    local function getpos()
+        local primpart = lplr.Character.PrimaryPart
+        local x = math.round(primpart.Position.X/3)
+        local y = math.round(primpart.Position.Y/3)
+        local z = math.round(primpart.Position.Z/3)
+        local realexpand = Expand["Value"] + 1
+        return Vector3.new(x,y-1,z) + (lplr.Character:FindFirstChild("HumanoidRootPart").CFrame.LookVector * math.round(Expand["Value"]))
+    end
+    local ui
+    spawn(function()
+        ui = Instance.new("ScreenGui",game:GetService("CoreGui"))
+        ui.Name = "ScaffoldUI"
+        ui.Enabled = false
+        if syn then syn.protect_gui(ui) end
+        local label = Instance.new("TextLabel")
+        label.TextSize = 16
+        label.Position = UDim2.new(0.4404,0,0.4700,0)
+        label.Size = UDim2.new(0.1181,0,0.1374,0)
+        label.BackgroundColor3 = Color3.fromRGB(255,255,255)
+        label.BackgroundTransparency = 1
+        label.Text = "Blocks Left: 0"
+        label.TextColor3 = Color3.fromRGB(65,65,255)
+        label.Parent = ui
+    end)
+    local old
+    local Enabled = false
+    local ShowAmount = {["Enabled"] = false}
+    local Scaffold = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "Scaffold",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                ui.Enabled = true
+                spawn(function()
+                    old = bedwars["BlockCPSConstants"].BLOCK_PLACE_CPS
+                    bedwars["BlockCPSConstants"].BLOCK_PLACE_CPS = 9999
+                    while task.wait() do
+                        if not Enabled then return end
+                        if IsAlive(lplr) then
+                            spawn(function()
+                                ui.TextLabel.Text = "BlocksLeft: "..getwoolamount()
+                            end)
+                            if getwool() ~= nil then
+                                game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.PlaceBlock:InvokeServer({
+                                    ["position"] = getpos(),
+                                    ["blockType"] = getwool().Obj.Name
+                                })
+                            end
+                        end
+                    end
+                end)
+            else
+                ui.Enabled = false
+                bedwars["BlockCPSConstants"].BLOCK_PLACE_CPS = old
+            end
+        end
+    })
+    ShowAmount = Scaffold:CreateOptionTog({
+        ["Name"] = "ShowAmount",
+        ["Default"] = true,
+        ["Func"] = function(v)
+            ShowAmount["Enabled"] = v
+            if Enabled then
+                ui.Enabled = v
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local velo
+    local Enabled = false
+    local HighJump = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "HighJump",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                local hrp = lplr.Character:FindFirstChild("HumanoidRootPart")
+                velo = Instance.new("BodyVelocity")
+                velo.Velocity = Vector3.new(0,0,0)
+                velo.MaxForce = Vector3.new(0,9e9,0)
+                velo.Parent = hrp
+                spawn(function()
+                    while task.wait() do
+                        if not Enabled then return end
+                        for i = 1,30 do
+                            task.wait()
+                            if not Enabled then return end
+                            velo.Velocity = velo.Velocity + Vector3.new(0,i*0.25,0)
+                        end
+                    end
+                end)
+            else
+                if velo then
+                    velo:Destroy()
+                    velo = nil
+                end
+            end
+        end
+    })
+end)
+
+ runcode(function()
+    local ui
+    spawn(function()
+        ui = Instance.new("ScreenGui",game:GetService("CoreGui"))
+        ui.Name = "BetterFlyUI"
+        ui.Enabled = false
+        if syn then syn.protect_gui(ui) end
+        local label = Instance.new("TextLabel")
+        label.TextSize = 16
+        label.Position = UDim2.new(0.4404,0,0.4700,0)
+        label.Size = UDim2.new(0.1181,0,0.1374,0)
+        label.BackgroundColor3 = Color3.fromRGB(255,255,255)
+        label.BackgroundTransparency = 1
+        label.Text = "Safe\nStuds: 0\nY: 0\nTime: 0"
+        label.TextColor3 = Color3.fromRGB(65,255,65)
+        label.Parent = ui
+    end)
+    local velo
+    local part
+    local clone
+    local Enabled = false
+    local BetterFly = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "GhostFly",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    local char = lplr.Character
+                    local starttick = tick()
+                    local startpos = char:FindFirstChild("HumanoidRootPart").Position
+                    ui.Enabled = true
+                    char.Archivable = true
+                    clone = char:Clone()
+                    velo = Instance.new("BodyVelocity")
+                    velo.MaxForce = Vector3.new(9e9,9e9,9e9)
+                    velo.Parent = char:FindFirstChild("HumanoidRootPart")
+                    clone.Parent = game:GetService("Workspace")
+                    cam.CameraSubject = clone:FindFirstChild("Humanoid")
+                    part = Instance.new("Part")
+                    part.Anchored = true
+                    part.Size = Vector3.new(10,1,10)
+                    part.Transparency = 1
+                    part.CFrame = clone:FindFirstChild("HumanoidRootPart").CFrame - Vector3.new(0,5,0)
+                    part.Parent = game:GetService("Workspace")
+                    for i,v in pairs(char:GetChildren()) do
+                        if string.lower(v.ClassName):find("part") and v.Name ~= "HumanoidRootPart" then
+                            v.Transparency = 1
+                        end
+                        if v:IsA("Accessory") then
+                            v:FindFirstChild("Handle").Transparency = 1
+                        end
+                    end
+                    char:FindFirstChild("Head"):FindFirstChild("face").Transparency = 1
+                    spawn(function()
+                        while task.wait() do
+                            if not Enabled then
+                                local studs = (startpos - char:FindFirstChild("HumanoidRootPart").Position).Magnitude
+                                local time_ = math.abs(starttick - tick())
+                                
+                                return
+                            end
+                            local studs = (startpos - char:FindFirstChild("HumanoidRootPart").Position).Magnitude
+                            local Y = char:FindFirstChild("HumanoidRootPart").Position.Y
+                            local calctime = math.abs(starttick - tick())
+                            if isnetworkowner(char:FindFirstChild("HumanoidRootPart")) then
+                                ui.TextLabel.TextColor3 = Color3.fromRGB(65,255,65)
+                                ui.TextLabel.Text = "Safe\nStuds: "..math.floor(studs).."\nY: "..math.floor(Y).."\nTime: "..math.floor(calctime)
+                            else
+                                ui.TextLabel.TextColor3 = Color3.fromRGB(255,65,65)
+                                ui.TextLabel.Text = "Unsafe\nStuds: "..math.floor(studs).."\nY: "..math.floor(Y).."\nTime: "..math.floor(calctime)
+                            end
+                        end
+                    end)
+                    spawn(function()
+                        while task.wait() do
+                            if not Enabled then return end
+                            for i = 2,30,2 do
+                                task.wait(0.01)
+                                if not Enabled then return end
+                                part.CFrame = CFrame.new(clone:FindFirstChild("HumanoidRootPart").CFrame.X,part.CFrame.Y,clone:FindFirstChild("HumanoidRootPart").CFrame.Z)
+                                clone:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(char:FindFirstChild("HumanoidRootPart").CFrame.X,clone:FindFirstChild("HumanoidRootPart").CFrame.Y,char:FindFirstChild("HumanoidRootPart").CFrame.Z)
+                                clone:FindFirstChild("HumanoidRootPart").Rotation = char:FindFirstChild("HumanoidRootPart").Rotation
+                                if char:FindFirstChild("Humanoid").MoveDirection.Magnitude > 0 then
+                                    velo.Velocity = lplr.Character:FindFirstChild("HumanoidRootPart").CFrame.LookVector * char:FindFirstChild("Humanoid").WalkSpeed + Vector3.new(0,150 + i,0)
+                                else
+                                    velo.Velocity = Vector3.new(0,150 + i,0)
+                                end
+                            end
+                        end
+                    end)
+                end)
+            else
+                for i,v in pairs(lplr.Character:GetChildren()) do
+                    if string.lower(v.ClassName):find("part") and v.Name ~= "HumanoidRootPart" then
+                        v.Transparency = 0
+                    end
+                    if v:IsA("Accessory") then
+                        v:FindFirstChild("Handle").Transparency = 0
+                    end
+                end
+                lplr.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 0
+                cam.CameraSubject = lplr.Character:FindFirstChild("Humanoid")
+                task.delay(0.1, function() velo:Destroy() end)
+                velo.Velocity = Vector3.new(0,-100,0)
+                velo:Destroy()
+                part:Destroy()
+                clone:Destroy()
+                ui.Enabled = false
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Speed = {["Value"] = 30}
+    local Enabled = false
+    local Spider = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "Spider",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    while task.wait() do
+                        if not Enabled then return end
+                        if IsAlive(lplr) then
+                            local param = RaycastParams.new()
+                            param.FilterDescendantsInstances = {game:GetService("CollectionService"):GetTagged("block")}
+                            param.FilterType = Enum.RaycastFilterType.Whitelist
+                            local ray = game:GetService("Workspace"):Raycast(lplr.Character:FindFirstChild("Head").Position-Vector3.new(0,3,0),lplr.Character:FindFirstChild("Humanoid").MoveDirection*3,param)
+                            local ray2 = game:GetService("Workspace"):Raycast(lplr.Character:FindFirstChild("Head").Position,lplr.Character:FindFirstChild("Humanoid").MoveDirection*3,param)
+                            if ray or ray2 then
+                                local velo = Vector3.new(0,Speed["Value"]/100,0)
+                                lplr.Character:TranslateBy(velo)
+                                local old = lplr.Character:FindFirstChild("HumanoidRootPart").Velocity
+                                lplr.Character:FindFirstChild("HumanoidRootPart").Velocity = Vector3.new(old.X,velo.Y*70,old.Z)
+                            end
+                        else
+                            task.wait()
+                        end
+                    end
+                end)
+            end
+        end
+    })
+    Speed = Spider:CreateSlider({
+        ["Name"] = "Speed",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 30,
+        ["Default"] = 30,
+        ["Round"] = 1
+    })
+end)
+ 
+runcode(function()
+    local Enabled = false
+    local AutoPlayAgain = Tabs["Utility"]:CreateToggle({
+        ["Name"] = "AutoPlay",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    repeat task.wait(3) until GetMatchState() == 2 or not Enabled
+                    if not Enabled then return end
+                    game:GetService("ReplicatedStorage"):FindFirstChild("events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events").joinQueue:FireServer({["queueType"] = getQueueType()})
+                    return
+                end)
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Connection
+    local Enabled = false
+    local NoClickDelay = Tabs["Utility"]:CreateToggle({
+        ["Name"] = "RemoveName",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                lplr.Character:WaitForChild("Head"):WaitForChild("NameTag"):Destroy()
+                Connection = lplr.CharacterAdded:Connect(function(v)
+                    v:WaitForChild("Head"):WaitForChild("NameTag"):Destroy()
+                end)
+            else
+                Connection:Disconnect()
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Enabled = false
+    local Skywars = Tabs["Utility"]:CreateToggle({
+        ["Name"] = "AutoFish",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+				oldfish = bedwars["FishermanTable"].startMinigame
+			bedwars["FishermanTable"].startMinigame = function(Self, dropdata, func) func({win = true}) end
+            else
+               bedwars["FishermanTable"].startMinigame = oldfish
+			oldfish = nil
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Connection
+    local Enabled = false
+    local ShopTierBypass = Tabs["Utility"]:CreateToggle({
+        ["Name"] = "ShopTierBypass",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+				for i,v in pairs(bedwars["ShopItems"]) do
+					v["tiered"] = nil
+					v["nextTier"] = nil
+				end
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local AntiVoiding = false
+    local Connection
+    local part
+    local YPos
+    local Enabled = false
+    local Mode = {["Value"] = "VeloHop"}
+    local AntiVoid = Tabs["World"]:CreateToggle({
+        ["Name"] = "AntiVoid",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                if not YPos then
+                    local blocks = game:GetService("CollectionService"):GetTagged("block")
+                    local blockraycast = RaycastParams.new()
+                    blockraycast.FilterType = Enum.RaycastFilterType.Whitelist
+					blockraycast.FilterDescendantsInstances = blocks
+                    local lowestpos = 99999
+                    for i,v in pairs(blocks) do
+                        local newray = game:GetService("Workspace"):Raycast(v.Position+Vector3.new(0,800,0),Vector3.new(0,-1000,0),blockraycast)
+                        if i % 200 == 0 then
+                            task.wait(0.06)
+                        end
+                        if newray and newray.Position.Y < lowestpos then
+                            lowestpos = newray.Position.Y
+                        end
+                    end
+                    YPos = lowestpos - 8
+                end
+                part = Instance.new("Part")
+                part.Anchored = true
+                part.Size = Vector3.new(5000,3,5000)
+                part.Material = Enum.Material.Neon
+                part.Color = Color3.fromRGB(191, 64, 191)
+                part.Transparency = 0.5
+                part.Position = Vector3.new(0,YPos,0)
+                part.Parent = game:GetService("Workspace")
+                Connection = part.Touched:Connect(function(v)
+                    if v.Parent.Name == lplr.Name and IsAlive(lplr) and not AntiVoiding then
+                        AntiVoiding = true
+                        if Mode["Value"] == "Velocity" then
+                            for i = 1,25 do
+                                task.wait()
+                                lplr.Character:FindFirstChild("HumanoidRootPart").Velocity = lplr.Character:FindFirstChild("HumanoidRootPart").Velocity + Vector3.new(0,7,0)
+                            end
+                        elseif Mode["Value"] == "Normal" then
+                            for i = 1,3 do
+                                task.wait(0.3)
+                                lplr.Character:FindFirstChild("Humanoid"):ChangeState(Enum.HumanoidStateType.Jumping)
+                            end
+                        end
+                        task.wait(0.25)
+                        AntiVoiding = false
+                    end
+                end)
+            else
+                part:Destroy()
+                Connection:Disconnect()
+                AntiVoiding = false
+            end
+        end
+    })
+    Mode = AntiVoid:CreateDropDown({
+        ["Name"] = "Mode",
+        ["Function"] = function() end,
+        ["List"] = {"Normal"},
+        ["Default"] = "Normal"
+    })
+end)
+
+runcode(function()
+    local MaxStuds = {["Value"] = 30}
+    local function ChestStealerFunc()
+        for i,v in pairs(game:GetService("CollectionService"):GetTagged("chest")) do
+            local mag = (lplr.Character:FindFirstChild("HumanoidRootPart").Position - v.Position).Magnitude
+            if mag < MaxStuds["Value"] then
+                local chest = v:FindFirstChild("ChestFolderValue")
+                chest = chest and chest.Value or nil
+                local chestitems = chest and chest:GetChildren() or {}
+                if #chestitems > 0 then
+                    Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(chest)
+                    for i3,v3 in pairs(chestitems) do
+                        if v3:IsA("Accessory") then
+                            pcall(function()
+                                Client:GetNamespace("Inventory"):Get("ChestGetItem"):CallServer(v.ChestFolderValue.Value,v3)
+                            end)
+                        end
+                    end
+                    Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(nil)
+                end
+            end
+        end
+    end
+    local Enabled = false
+    local ChestStealer = Tabs["World"]:CreateToggle({
+        ["Name"] = "ChestStealer",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    while task.wait(0.01) do
+                        if Enabled == false then return end
+                        if IsAlive(lplr) then
+                            ChestStealerFunc()
+                        end
+                    end
+                end)
+            end
+        end
+    })
+    MaxStuds = ChestStealer:CreateSlider({
+        ["Name"] = "Distance",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 30,
+        ["Default"] = 30,
+        ["Round"] = 1
+    })
+end)
+ 
+runcode(function()
+    local Enabled = false
+    local StoneExploit = Tabs["Exploits"]:CreateToggle({
+        ["Name"] = "SwordExploit",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    if GetMatchState() ~= 0 then
+                        return
+                    end
+                    lplr.Character:WaitForChild("InventoryFolder").Value:WaitForChild("stone_sword")
+                    Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(game:GetService("ReplicatedStorage").Inventories:FindFirstChild(lplr.Name.."_personal"))
+                    Client:GetNamespace("Inventory"):Get("ChestGiveItem"):CallServer(
+                        game:GetService("ReplicatedStorage").Inventories:FindFirstChild(lplr.Name.."_personal"),
+                        lplr.Character:FindFirstChild("InventoryFolder").Value:FindFirstChild("stone_sword")
+                    )
+                    Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(nil)
+                    repeat task.wait() until GetMatchState() == 1
+                    task.wait(1)
+                    Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(game:GetService("ReplicatedStorage").Inventories:FindFirstChild(lplr.Name.."_personal"))
+                    Client:GetNamespace("Inventory"):Get("ChestGetItem"):CallServer(
+                        game:GetService("ReplicatedStorage").Inventories:FindFirstChild(lplr.Name.."_personal"),
+                        game:GetService("ReplicatedStorage").Inventories:FindFirstChild(lplr.Name.."_personal").stone_sword
+                    )
+                    Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(nil)
+                end)
+            end
+        end
+    })
+end)
+ 
+ runcode(function()
+    local BreakingMsg = false
+    local params = RaycastParams.new()
+    params.IgnoreWater = true
+    function NukerFunction(part)
+        local raycastResult = game:GetService("Workspace"):Raycast(part.Position + Vector3.new(0,24,0),Vector3.new(0,-27,0),params)
+        if raycastResult then
+            local targetblock = raycastResult.Instance
+            for i,v in pairs(targetblock:GetChildren()) do
+                if v:IsA("Texture") then
+                    v:Destroy()
+                end
+            end
+            targetblock.Color = Color3.fromRGB(255,65,65)
+            targetblock.Material = Enum.Material.Neon
+            game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.DamageBlock:InvokeServer({
+                ["blockRef"] = {
+                    ["blockPosition"] = Vector3.new(math.round(targetblock.Position.X/3),math.round(targetblock.Position.Y/3),math.round(targetblock.Position.Z/3))
+                },
+                ["hitPosition"] = Vector3.new(math.round(targetblock.Position.X/3),math.round(targetblock.Position.Y/3),math.round(targetblock.Position.Z/3)),
+                ["hitNormal"] = Vector3.new(math.round(targetblock.Position.X/3),math.round(targetblock.Position.Y/3),math.round(targetblock.Position.Z/3))
+            })
+            if BreakingMsg == false then
+                BreakingMsg = true
+                print("Breaking bed")
+                spawn(function()
+                    task.wait(3)
+                    BreakingMsg = false
+                end)
+            end
+        end
+    end
+    function GetBeds()
+        local beds = {}
+        for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+            if string.lower(v.Name) == "bed" and v:FindFirstChild("Covers") ~= nil and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
+                table.insert(beds,v)
+            end
+        end
+        return beds
+    end
+    local Enabled = false
+    local Distance = {["Value"] = 30}
+    local Animation = {["Enabled"] = false}
+    local Nuker = Tabs["World"]:CreateToggle({
+        ["Name"] = "Nuker",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    while task.wait(0.1) do
+                        if not Enabled then return end
+                        spawn(function()
+                            if lplr:GetAttribute("DenyBlockBreak") == true then
+                                lplr:SetAttribute("DenyBlockBreak",nil)
+                            end
+                        end)
+                        if IsAlive(lplr) then
+                            local beds = GetBeds()
+                            for i,v in pairs(beds) do
+                                local mag = (v.Position - lplr.Character.PrimaryPart.Position).Magnitude
+                                if mag < Distance["Value"] then
+                                    NukerFunction(v)
+                                end
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    })
+    Distance = Nuker:CreateSlider({
+        ["Name"] = "Distance",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 30,
+        ["Default"] = 30,
+        ["Round"] = 1
+    })
+end)
+
+runcode(function()
+    function GetBeds()
+        local beds = {}
+        for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+            if string.lower(v.Name) == "bed" and v:FindFirstChild("Covers") ~= nil and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
+                table.insert(beds,v)
+            end
+        end
+        return beds
+    end
+    function GetPlayers()
+        local players = {}
+        for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v.Team ~= lplr.Team and IsAlive(v) then
+                table.insert(players,v)
+            end
+        end
+        return players
+    end
+    local Enabled = false
+    local AutoWin = Tabs["Exploits"]:CreateToggle({
+        ["Name"] = "SlowAutoWin",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                    if GetMatchState() ~= 1 then
+                        repeat task.wait() until GetMatchState() == 1 or not Enabled
+                        if not Enabled then return end
+                    end
+                    local start = tick()
+                    local beds = GetBeds()
+                    for i,v in pairs(beds) do
+                        repeat
+                            task.wait(0.01)
+                            if lplr:GetAttribute("DenyBlockBreak") == true then
+                                lplr:SetAttribute("DenyBlockBreak",nil)
+                            end
+                            lplr.Character:FindFirstChild("HumanoidRootPart").CFrame = v.CFrame + Vector3.new(0,3,0)
+                            local x = math.round(v.Position.X/3)
+                            local y = math.round(v.Position.Y/3)
+                            local z = math.round(v.Position.Z/3)
+                            game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.DamageBlock:InvokeServer({
+                                ["blockRef"] = {
+                                    ["blockPosition"] = Vector3.new(x,y,z)
+                                },
+                                ["hitPosition"] = Vector3.new(x,y,z),
+                                ["hitNormal"] = Vector3.new(x,y,z)
+                            })
+                        until not v:FindFirstChild("Covers") or not v or not Enabled
+                        if not Enabled then return end
+                    end
+                    local players = GetPlayers()
+                    for i,v in pairs(players) do
+                        repeat
+                            task.wait(0.01)
+                            lplr.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame + Vector3.new(0,3,0)
+                        until not IsAlive(v)
+                    end
+                    CreateNotification("AutoWin","Took "..math.abs(start - tick()).." Seconds/Ticks to win Game",5)
+                end)
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Enabled = false
+    local Skywars = Tabs["Exploits"]:CreateToggle({
+        ["Name"] = "TrumpetAura",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+               getgenv().Aura = true
+               spawn(function()
+                   while Aura == true do
+                       local args = {[1] = "TRUMPET_PLAY"}
+                       game:GetService("ReplicatedStorage"):FindFirstChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events").useAbility:FireServer(unpack(args))
+                       game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.ldzwbijyvmlYiTzzalrcvgOmClbeekhiDc:InvokeServer()
+                       wait()
+                   end
+               end)
+            else
+               getgenv().Aura = false
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local Enabled = false
+    local EmeraldsExploit = Tabs["Exploits"]:CreateToggle({
+        ["Name"] = "PickUpEmeralds",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ItemDrops.emerald.CFrame
+                end)
+            end
+        end
+    })
+end)
+ 
+ runcode(function()
+    local Enabled = false
+    local DiamondsExploit = Tabs["Exploits"]:CreateToggle({
+        ["Name"] = "PickupDiamonds",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                spawn(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ItemDrops.diamond.CFrame
+                end)
+            end
+        end
+    })
+end)
+ 
+
+runcode(function()
+    function HasTNT()
+        if IsAlive(lplr) and lplr.Character:FindFirstChild("InventoryFolder").Value:FindFirstChild("tnt") then
+            return true
+        end
+        return false
+    end
+    function getpos()
+        local x = math.round(lplr.Character.PrimaryPart.Position.X/3)
+        local y = math.round(lplr.Character.PrimaryPart.Position.Y/3)
+        local z = math.round(lplr.Character.PrimaryPart.Position.Z/3)
+        return Vector3.new(x,y,z)
+    end
+    local Speed = {["Value"] = 90}
+    local Up = {["Value"] = 5}
+    local velo
+    local Enabled = false
+    local TNTFly = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "TNTFly",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                velo = Instance.new("BodyVelocity")
+                velo.MaxForce = Vector3.new(9e9,9e9,9e9)
+                velo.Velocity = Vector3.new(0,0.5,0)
+                velo.Parent = lplr.Character:FindFirstChild("HumanoidRootPart")
+                if not HasTNT() then
+                    lib["ToggleFuncs"]["TNTFly"](true)
+                    return
+                end
+                game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.PlaceBlock:InvokeServer({
+                    ["position"] = getpos(),
+                    ["blockType"] = "tnt"
+                })
+                task.wait(3)
+                lplr.Character:FindFirstChild("Humanoid"):ChangeState(Enum.HumanoidStateType.Jumping)
+                velo.Velocity = lplr.Character:FindFirstChild("HumanoidRootPart").CFrame.LookVector * Speed["Value"] + Vector3.new(0,Up["Value"],0)
+                lplr.Character:FindFirstChild("Humanoid"):ChangeState(Enum.HumanoidStateType.Jumping)
+            else
+                velo:Destroy()
+            end
+        end
+    })
+    Speed = TNTFly:CreateSlider({
+        ["Name"] = "Speed",
+        ["Function"] = function() end,
+        ["Min"] = 0,
+        ["Max"] = 125,
+        ["Default"] = 80,
+        ["Round"] = 1
+    })
+    Up = TNTFly:CreateSlider({
+        ["Name"] = "Height",
+        ["Function"] = function() end,
+        ["Min"] = 10,
+        ["Max"] = 100,
+        ["Default"] = 25,
+        ["Round"] = 1
+    })
+end)
+
+ runcode(function()
+    local Enabled = false
+    local vulflyys = Tabs["Blatant"]:CreateToggle({
+        ["Name"] = "VulcanFly",
+        ["Callback"] = function(Callback)
+            Enabled = Callback
+            if Enabled then
+                velo = Instance.new("BodyVelocity")
+
+                velo.MaxForce = Vector3.new(0,9e9,0)
+                velo.Parent = lplr.Character:FindFirstChild("HumanoidRootPart")
+                spawn(function()
+                    repeat
+                        task.wait(0.1)
+                        
+                            velo.Velocity = Vector3.new(0,1,0)
+                            task.wait(0.15)
+                            velo.Velocity = Vector3.new(0,0.1,0)
+                        
+                            task.wait(0.15)
+                            velo.Velocity = Vector3.new(1,0,0)
+                            task.wait(0.15)
+                            velo.Velocity = Vector3.new(0.1,0,0)
+                            task.wait(0.15)
+                            velo.Velocity = Vector3.new(0,0,1)
+                            task.wait(0.15)
+                            velo.Velocity = Vector3.new(0,0,0.1)
+                            
+                        
+                        
+                    until not Enabled
+                end)
+            else
+                velo:Destroy()
+                for i,v in pairs(lplr.Character:FindFirstChild("HumanoidRootPart"):GetChildren()) do
+                    if v:IsA("BodyVelocity") then
+                        v:Destroy()
+                    end
+                end
+                end
+
+
+                
+            end
+        
+    })
+end)
+                                                              end
+Tab:Button{
+	Name = "Button",
+	Description = nil,
+	Callback = function()
+                                                                                         loadstring(game:HttpGet("https://raw.githubusercontent.com/NukeVsCity/TheALLHACKLoader/main/NukeLoader"))()       
+                                      end
+}
+Tab:Button{
+	Name = "Scythe Hub",
+	Description = nil,
+	Callback = function()
+                                                                                -- Loadstring
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+-- Window
+local Window = Library.CreateLib("SyctheHub", "Sentinel")
+
+-- Jailbreak
+-- Tab
+local Jailbreak = Window:NewTab("Jailbreak")
+
+-- Section
+local JailbreakSection = Jailbreak:NewSection("Jailbreak")
+
+-- Button
+JailbreakSection:NewButton("Execute", "Executes The Jailbreak Script", function()
+   loadstring(game:HttpGet(('https://raw.githubusercontent.com/xChaoticVoid/Jailbreak/main/Chaos.lua'), true))()
+end)
+
+-- Phantom Forces
+-- Tab
+local Phantom = Window:NewTab("Phantom Forces")
+
+-- Section
+local PhantomSection = Phantom:NewSection("Phantom")
+
+-- Button
+PhantomSection:NewButton("Silent Aim", "Executes The Silent Aim Script", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/The3Bakers4565/Spicy-Bagel/main/Other/Phantom_Forces/Silent_Aim.lua"))()
+end)
+
+PhantomSection:NewButton("ESP", "Executes The ESP Script", function()
+  loadstring(game:HttpGet(('https://raw.githubusercontent.com/rblxscriptsnet/scripts/main/phantomforces1'),true))()
+end)
+
+-- Counter Blox
+-- Tab
+local Cb = Window:NewTab("Counter Blox")
+
+-- Section
+local CbSection = Cb:NewSection("Cb")
+
+-- Button
+CbSection:NewButton("Execute", "Executes The Counter Blox Script", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Pawel12d/hexagon/main/scripts/CounterBlox.lua', true))()
+end)
+
+-- Bedwars
+-- Tab
+local Bw = Window:NewTab("Bed Wars")
+
+-- Section
+local BwSection = Bw:NewSection("Bw")
+
+-- Button
+BwSection:NewButton("Execute", "Executes The Bedwars Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+end)
+
+-- Arsenal 
+-- Tab
+local AR = Window:NewTab("Arsenal")
+
+-- Section
+local ARSection = AR:NewSection("Arsenal")
+
+-- Button
+ARSection:NewButton("Owl Hub", "Executes The Owl Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+end)
+
+-- Kat
+-- Tab
+local Kat = Window:NewTab("Kat")
+
+-- Section
+local KatSection = Kat:NewSection("Kat")
+
+-- Button
+KatSection:NewButton("Owl Hub", "Executes The Owl Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+end)
+
+-- Murderer VS Sherrif
+-- Tab
+local KVS = Window:NewTab("Murderer VS Sherrif")
+
+-- Section
+local KVSSection = KVS:NewSection("Murderer VS Sherrif")
+
+-- Button
+KVSSection:NewButton("Excute", "Executes The Owl Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/MurderersVsSheriffs.lua"))()
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Keybind
+-- Tab
+local Kb = Window:NewTab("Keybind")
+
+-- Section
+local KbSection = Kb:NewSection("Kb")
+
+-- Select Key
+KbSection:NewKeybind("Select A Key", "Select A Key", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)              
+                                                                                              end
+}
+
+Tab:Button{
+	Name = "Future script",
+	Description = nil,
+	Callback = function()
+-- // credits to anyones code i used/looked at.
+print("[Future] Loading!")
+repeat task.wait() until game:IsLoaded()
+if shared.Future~=nil then print("[Future] Detected future already executed, not executing!") return end
+shared.futureStartTime = game:GetService("Workspace"):GetServerTimeNow()
+shared._FUTUREVERSION = "1.1.7a2 | "..((shared.FutureDeveloper and "dev" or "release")).." build" -- // This is a cool thing yes
+shared._FUTUREMOTD = "futureclient.xyz 🔥"
+local startTime = shared.futureStartTime
+shared.Future = {}
+local Future = shared.Future
+local UIS = game:GetService("UserInputService")
+local TS = game:GetService("TweenService")
+local HTTPSERVICE = game:GetService("HttpService")
+local PLAYERS = game:GetService("Players")
+local CONTENTPROVIDER = game:GetService("ContentProvider")
+local COREGUI = game:GetService("CoreGui")
+local lplr = PLAYERS.LocalPlayer
+local requestfunc = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or request
+local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport
+local setthreadidentityfunc = syn and syn.set_thread_identity or set_thread_identity or setidentity or setthreadidentity
+local getthreadidentityfunc = syn and syn.get_thread_identity or get_thread_identity or getidentity or getthreadidentity
+local spawn = function(func) 
+    return coroutine.wrap(func)()
+end
+local betterisfile = function(file)
+	local suc, res = pcall(function() return readfile(file) end)
+	return suc and res ~= nil
+end
+Future.SignalLib = true
+
+local function requesturl(url, bypass) 
+    if betterisfile(url) and shared.FutureDeveloper then 
+        return readfile(url)
+    end
+    local repourl = bypass and "https://raw.githubusercontent.com/joeengo/" or "https://raw.githubusercontent.com/joeengo/Future/main/"
+    local url = url:gsub("Future/", "")
+    local req = requestfunc({
+        Url = repourl..url,
+        Method = "GET"
+    })
+    if req.StatusCode ~= 200 then return req.StatusCode end
+    return req.Body
+end 
+
+
+--shared.Future.entity = loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/Libraries/entityHandler.lua"))()
+
+-- anti mobile skids:
+
+(function() 
+    local entity = loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/Libraries/entityHandler.lua"))()
+end)()
+
+
+-- AntiPreloadAsync:
+local suc, err = pcall(function()
+    if not shared.AntiPreloadAsync then
+        shared.AntiPreloadAsync = true
+        local oldnamecall, oldPreloadAsync; do 
+            oldnamecall = hookmetamethod(game, "__namecall", function(self, tab, ...) 
+                local namecallmethod = string.lower(getnamecallmethod())
+                
+                if self ~= CONTENTPROVIDER then 
+                    return oldnamecall(self, tab, ...)
+                end
+
+                if not ((namecallmethod == 'preload' or namecallmethod == 'preloadasync') and (type(tab)=='table' and table.find(tab, COREGUI))) then 
+                    return oldnamecall(self, tab, ...)
+                end
+                
+                local returnTable = {}
+                for i,v in next, tab do 
+                    local assets; CONTENTPROVIDER.PreloadAsync(CONTENTPROVIDER, {v}, function(a) assets=a end)
+                    repeat task.wait() until assets
+                    if v == COREGUI then 
+                        for i2,v2 in next, assets do 
+                            if v2:match("rbxassetid://") then 
+                                assets[i2] = "rbxasset://textures/ui/Vehicle/SpeedBar.png"
+                            end    
+                        end
+                    end
+                    returnTable[#returnTable+1] = unpack(assets)
+                end
+                
+                return oldnamecall(self, tab, ...)
+            end)
+
+            oldPreloadAsync = hookfunction(CONTENTPROVIDER.PreloadAsync, function(tab) 
+                if not (type(tab)=='table' and table.find(tab, COREGUI)) then 
+                    return oldPreloadAsync(tab)
+                end
+                
+                local returnTable = {}
+                for i,v in next, tab do 
+                    local assets; oldPreloadAsync(CONTENTPROVIDER, {v}, function(a) assets=a end)
+                    if v == COREGUI then 
+                        for i2,v2 in next, assets do 
+                            if v2:match("rbxassetid://") then 
+                                assets[i2] = "rbxasset://textures/ui/Vehicle/SpeedBar.png"
+                            end    
+                        end
+                    end
+                    returnTable[#returnTable+1] = unpack(assets)
+                end
+
+                return returnTable
+            end)    
+        end
+    end
+end)
+
+if not suc then 
+    warn("[Future] AntiPreloadAsync failed to load: "..err)
+end
+
+if game:GetService("CoreGui"):FindFirstChild("RobloxVRGui") then 
+    game:GetService("CoreGui"):FindFirstChild("RobloxVRGui"):Destroy()
+end
+
+local GuiLibrary = loadstring(requesturl("Future/GuiLibrary.lua"))()
+
+shared.Future.GuiLibrary = GuiLibrary
+local getcustomasset = --[[getsynasset or getcustomasset or]] GuiLibrary["getRobloxAsset"]
+GuiLibrary["LoadOnlyGuiConfig"]()
+
+
+local HeartbeatTable = {}
+local RenderStepTable = {}
+local SteppedTable = {}
+local function isAlive(plr)
+    local plr = plr or lplr
+    if plr and plr.Character and ((plr.Character:FindFirstChild("Humanoid")) and (plr.Character:FindFirstChild("Humanoid") and plr.Character:FindFirstChild("Humanoid").Health > 0) and (plr.Character:FindFirstChild("HumanoidRootPart"))) then
+        return true
+    end
+end
+
+local function BindToHeartbeat(name, func)
+    if HeartbeatTable[name] == nil then
+        HeartbeatTable[name] = game:GetService("RunService").Heartbeat:connect(func)
+    end
+end
+local function UnbindFromHeartbeat(name)
+    if HeartbeatTable[name] then
+        HeartbeatTable[name]:Disconnect()
+        HeartbeatTable[name] = nil
+    end
+end
+local function BindToRenderStep(name, func)
+	if RenderStepTable[name] == nil then
+		RenderStepTable[name] = game:GetService("RunService").RenderStepped:connect(func)
+	end
+end
+local function UnbindFromRenderStep(name)
+	if RenderStepTable[name] then
+		RenderStepTable[name]:Disconnect()
+		RenderStepTable[name] = nil
+	end
+end
+local function BindToStepped(name, func)
+	if SteppedTable[name] == nil then
+		SteppedTable[name] = game:GetService("RunService").Stepped:connect(func)
+	end
+end
+local function UnbindFromStepped(name)
+	if SteppedTable[name] then
+		SteppedTable[name]:Disconnect()
+		SteppedTable[name] = nil
+	end
+end
+
+local function skipFrame() 
+    return game:GetService("RunService").Heartbeat:Wait()
+end
+
+local function ferror(...)
+    local args ={...}
+    local str=""
+    for i,v in next,args do 
+        str=str.." "..tostring(v)
+    end
+    GuiLibrary["CreateNotification"]("<font color='rgb(255, 10, 10)'>[ERROR]"..str.."</font>")
+    error("[Future]"..str)
+end
+
+local function fwarn(...)
+    local args ={...}
+    local str=""
+    for i,v in next,args do 
+        str=str.." "..tostring(v)
+    end
+    warn("[Future]"..str)
+    GuiLibrary["CreateNotification"]("<font color='rgb(255, 255, 10)'>[WARNING] "..str.."</font>")
+end
+
+local function fprint(...)
+    local args ={...}
+    local str=""
+    for i,v in next,args do 
+        str=str.." "..tostring(v)
+    end
+    print("[Future]"..str)
+    GuiLibrary["CreateNotification"]("<font color='rgb(170, 170, 170)'>"..str.."</font>")
+end
+
+local function getasset(path)
+	if not betterisfile(path) then
+		local req = requestfunc({
+			Url = "https://raw.githubusercontent.com/joeengo/Future/main/"..path:gsub("Future/assets", "assets"),
+			Method = "GET"
+		})
+        print("[Future] downloading "..path.." asset.")
+		writefile(path, req.Body)
+        repeat task.wait() until betterisfile(path)
+        print("[Future] downloaded "..path.." asset successfully!")
+	end
+	return getcustomasset(path) 
+end
+
+local function getscript(id) 
+    local id = id or shared.FuturePlaceId or game.PlaceId
+    id = tostring(id)
+    local req = requesturl("Future/scripts/"..id..".lua")
+    if type(req) == "string" then
+        return loadstring(req)()
+    else
+        --fwarn("[Future] invalid script (error "..tostring(req)..")") -- game is not supported
+    end
+end
+
+local function getplusscript(id) -- future plus moment
+    local id = id or shared.FuturePlaceId or game.PlaceId
+    id = tostring(id)
+    if not betterisfile("Future/plus/"..id..".fp") then return end
+    local req = readfile("Future/plus/"..id..".fp")
+    if type(req) == "string" then
+        return loadstring(req)()
+    else
+        --fwarn("[Future] invalid script (error "..tostring(req)..")") -- game is not supported
+    end
+end
+
+local function getcustomscripts(id) 
+    local id = id or shared.FuturePlaceId or game.PlaceId
+    id = tostring(id)
+    if not isfolder("Future/custom-scripts/"..id) then 
+        return
+    end
+    local files = listfiles("Future/custom-scripts/"..id)
+    for i,v in next, files do 
+        local req = readfile(v)
+        if type(req) == "string" then
+            print("[Future] Loading script ", v)
+            loadstring(req)()
+        end
+    end
+end
+
+GuiLibrary["LoadOnlyGuiConfig"]()
+
+
+local friendstab = {pcall(function() HTTPSERVICE:JSONDecode(readfile("Future/Friends.json")) end)}
+Future.Friends = friendstab[1] and friendstab[2] or {}
+
+Future.isFriend = function(plr) 
+    return Future.Friends[plr.Name:lower()] and true or false
+end
+
+Future.addFriend = function(plrname) 
+    if not Future.Friends[plrname:lower()] then
+        Future.Friends[plrname:lower()] = true
+        GuiLibrary.CreateNotification("Successfully added "..plrname.." to your friends list!")
+    end
+end
+
+Future.delFriend = function(plrname) 
+    if Future.Friends[plrname:lower()] then
+        Future.Friends[plrname:lower()] = nil
+        GuiLibrary.CreateNotification("Successfully removed "..plrname.." from your friends list!")
+    end
+end
+Future.removeFriend = Future.delFriend
+
+Future.toggleFriend = function(plrname) 
+    if Future.Friends[plrname:lower()] then 
+        Future.removeFriend(plrname)
+    else
+        Future.addFriend(plrname)
+    end
+end
+
+Future.canBeTargeted = function(plr) 
+    if Future.isFriend(plr) then return false end
+    if not isAlive(plr) then return false end
+    if plr == lplr then return false end
+    if ((plr.Team or "plr")==(lplr.Team or "lplr")) then return false end
+    return true
+end
+
+local CombatWindow = GuiLibrary.CreateWindow({["Name"] = "Combat"})
+local ExploitsWindow = GuiLibrary.CreateWindow({["Name"] = "Exploits"})
+local MiscellaneousWindow = GuiLibrary.CreateWindow({["Name"] = "Miscellaneous"})
+local MovementWindow = GuiLibrary.CreateWindow({["Name"] = "Movement"})
+local RenderWindow = GuiLibrary.CreateWindow({["Name"] = "Render"})
+local WorldWindow = GuiLibrary.CreateWindow({["Name"] = "World"})
+local OtherWindow = GuiLibrary.CreateWindow({["Name"] = "Other"})
+
+local fontButton = {}; fontButton = OtherWindow.CreateOptionsButton({
+    Name = "Font",
+    Function = function(callback) 
+        if not callback then 
+            fontButton.Toggle()
+        end
+    end,
+    Default = true,
+    NoKeybind = true,
+})
+local textSizeSlider = {}; textSizeSlider = fontButton.CreateSlider({
+    Name = "TextSize",
+    Function = function(value) 
+        GuiLibrary.TextSize = value
+        for i,v in next, GuiLibrary.ScreenGui:GetDescendants() do 
+            if pcall(function() return v.TextSize end) then 
+                v.TextSize = value
+            end
+        end
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    Default = 18,
+    Max = 28,
+    Min = 8,
+    Round = 0,
+})
+
+local configButton; configButton = OtherWindow.CreateOptionsButton({
+    ["Name"] = "Config",
+    ["Function"] = function(callback)
+    end,
+    ["NoKeybind"] = true,
+})
+local configBox; configBox = configButton.CreateTextbox({
+    ["Name"] = "ConfigName",
+    ["Function"] = function(value)
+        spawn(function()
+            GuiLibrary["SaveConfig"](GuiLibrary["CurrentConfig"])
+            if betterisfile("Future/configs/"..tostring(shared.FuturePlaceId or game.PlaceId).."/"..value..".json") then
+                GuiLibrary["LoadConfig"](value)
+            end
+            GuiLibrary["CurrentConfig"] = value
+        end)
+    end,
+    ["Default"] = "default"
+})
+if betterisfile("Future/configs/!SelectedConfigs/"..tostring(shared.FuturePlaceId or game.PlaceId)..".txt") then 
+    GuiLibrary.CurrentConfig = readfile("Future/configs/!SelectedConfigs/"..tostring(shared.FuturePlaceId or game.PlaceId)..".txt") 
+    configBox.Set(GuiLibrary.CurrentConfig, true)
+    print("[Future] Detected config ",GuiLibrary.CurrentConfig," used last time!")
+else
+    print("[Future] uh idk man")
+end
+local clickGuiButton = OtherWindow.CreateOptionsButton({
+    ["Name"] = "ClickGui",
+    ["Function"] = function(callback) 
+        GuiLibrary.ClickGUI.Visible = callback
+    end,
+    ["DefaultKeybind"] = GuiLibrary.GuiKeybind,
+    ["OnKeybound"] = function(key) 
+        if key then GuiLibrary.GuiKeybind = key end
+    end
+})
+local clickSoundToggle = clickGuiButton.CreateToggle({
+    ["Name"] = "ClickSounds",
+    ["Function"] = function(callback)
+        GuiLibrary["ClickSounds"] = callback
+    end,
+    ["Default"] = true
+})
+
+local HUDButton = OtherWindow.CreateOptionsButton({
+    ["Name"] = "HUD",
+    ["Function"] = function(callback) 
+        GuiLibrary["HUDEnabled"] = callback
+    end,
+    ["Default"] = true
+})
+local NotificationsToggle = HUDButton.CreateToggle({
+    ["Name"] = "Notifications",
+    ["Function"] = function(callback) 
+        GuiLibrary["AllowNotifications"] = callback
+    end,
+    ["Default"] = true
+})
+local TargetHUDToggle = HUDButton.CreateToggle({
+    ["Name"] = "TargetHUD",
+    ["Function"] = function(callback) 
+        GuiLibrary["TargetHUDEnabled"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local ArrayListToggle = HUDButton.CreateToggle({
+    ["Name"] = "ArrayList",
+    ["Function"] = function(callback) 
+        GuiLibrary["ScreenGui"].ArrayList.Visible = callback
+        GuiLibrary["ArrayList"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local ArrayList2Toggle = HUDButton.CreateToggle({
+    ["Name"] = "ListBackground",
+    ["Function"] = function(callback) 
+        GuiLibrary["ListBackground"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local ArrayList3Toggle = HUDButton.CreateToggle({
+    ["Name"] = "ListLines",
+    ["Function"] = function(callback) 
+        GuiLibrary["ListLines"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local WatermarkToggle = HUDButton.CreateToggle({
+    ["Name"] = "Watermark",
+    ["Function"] = function(callback) 
+        GuiLibrary["DrawWatermark"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local WatermarkToggle2 = HUDButton.CreateToggle({
+    ["Name"] = "WMBackground",
+    ["Function"] = function(callback) 
+        GuiLibrary["WatermarkBackground"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local WatermarkToggle3 = HUDButton.CreateToggle({
+    ["Name"] = "WMLine",
+    ["Function"] = function(callback) 
+        GuiLibrary["WatermarkLine"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local RenderingToggle = HUDButton.CreateSelector({
+    ["Name"] = "Rendering",
+    ["Function"] = function(value) 
+        GuiLibrary["Rendering"] = value
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = "Up",
+    ["List"] = {"Up", "Down"}
+})
+local CoordsToggle = HUDButton.CreateToggle({
+    ["Name"] = "Coords",
+    ["Function"] = function(callback) 
+        GuiLibrary["DrawCoords"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local SpeedToggle = HUDButton.CreateToggle({
+    ["Name"] = "Speed",
+    ["Function"] = function(callback) 
+        GuiLibrary["DrawSpeed"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local FPSToggle = HUDButton.CreateToggle({
+    ["Name"] = "FPS",
+    ["Function"] = function(callback) 
+        GuiLibrary["DrawFPS"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+local PingToggle = HUDButton.CreateToggle({
+    ["Name"] = "Ping",
+    ["Function"] = function(callback) 
+        GuiLibrary["DrawPing"] = callback
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+    end,
+    ["Default"] = false
+})
+
+local colorButton; colorButton = OtherWindow.CreateOptionsButton({
+    ["Name"] = "Colors",
+    ["Function"] = function(callback) 
+        if not callback then 
+            colorButton.Toggle(true)
+        end
+    end,
+    ["Default"] = true,
+    ["NoKeybind"] = true,
+})
+local hueSlider = colorButton.CreateSlider({
+    ["Name"] = "Hue",
+    ["Function"] = function(value) 
+        if not GuiLibrary["Rainbow"] then
+            local value = value * 0.002777777777777 -- 360 * 0.002777777777777 = 1.000
+            GuiLibrary["ColorTheme"].H = value
+            GuiLibrary["Signals"]["UpdateColor"]:Fire(GuiLibrary["ColorTheme"])
+        end
+    end,
+    ["Min"] = 0,
+    ["Max"] = 360,
+})
+local saturationSlider = colorButton.CreateSlider({
+    ["Name"] = "Saturation",
+    ["Function"] = function(value) 
+        GuiLibrary["ColorTheme"].S = value / 100
+        GuiLibrary["Signals"]["UpdateColor"]:Fire(GuiLibrary["ColorTheme"])
+    end,
+    ["Min"] = 0,
+    ["Max"] = 100,
+})
+local valueSlider = colorButton.CreateSlider({
+    ["Name"] = "Lightness",
+    ["Function"] = function(value) 
+        GuiLibrary["ColorTheme"].V = value / 100
+        GuiLibrary["Signals"]["UpdateColor"]:Fire(GuiLibrary["ColorTheme"])
+    end,
+    ["Min"] = 0,
+    ["Max"] = 100,
+})
+local rainbowToggle = colorButton.CreateToggle({
+    ["Name"] = "Rainbow",
+    ["Function"] = function(callback) 
+        GuiLibrary["Rainbow"] = callback
+    end,
+})
+local rainbowSlider = colorButton.CreateSlider({
+    ["Name"] = "RBSpeed",
+    ["Function"] = function(value) 
+        GuiLibrary["RainbowSpeed"] = value
+    end,
+    ["Min"] = 1,
+    ["Max"] = 50,
+    ["Default"] = 10,
+})
+
+local discordButton = {["Toggle"] = function(...) end} discordButton = OtherWindow.CreateOptionsButton({
+    ["Name"] = "Discord",
+    ["Function"] = function(callback)
+        if callback then
+            pcall(function() setclipboard("https://discord.com/invite/bdjT5UmmDJ") end)
+            spawn(function()
+				for i = 1, 14 do
+					spawn(function()
+						local reqbody = {
+							["nonce"] = game:GetService("HttpService"):GenerateGUID(false), -- What, there is a nonce in my script?
+							["args"] = {
+								["invite"] = {["code"] = "bdjT5UmmDJ"},
+								["code"] = "bdjT5UmmDJ",
+							},
+							["cmd"] = "INVITE_BROWSER"
+						}
+						local newreq = game:GetService("HttpService"):JSONEncode(reqbody)
+						requestfunc({
+							Headers = {
+								["Content-Type"] = "application/json",
+								["Origin"] = "https://discord.com"
+							},
+							Url = "http://127.0.0.1:64"..(53 + i).."/rpc?v=1",
+							Method = "POST",
+							Body = newreq
+						})
+					end)
+				end
+			end)
+            discordButton["Toggle"](false, true) 
+        end
+    end
+})
+
+local destructButton; destructButton = OtherWindow.CreateOptionsButton({
+    ["Name"] = "Destruct",
+    ["Function"] = function(callback)
+        if callback then
+            spawn(function()
+                GuiLibrary["SaveConfig"](GuiLibrary["CurrentConfig"])
+                GuiLibrary.Signals.onDestroy:Fire()
+            end)
+        end
+    end
+})
+
+local restartButton; restartButton = OtherWindow.CreateOptionsButton({
+    ["Name"] = "Restart",
+    ["Function"] = function(callback) 
+        if callback then 
+            spawn(function() 
+                restartButton.Toggle(nil)
+                GuiLibrary["SaveConfig"](GuiLibrary["CurrentConfig"])
+                GuiLibrary.Signals.onDestroy:Fire()
+                task.wait(0.5)
+                if shared.FutureDeveloper then 
+                    loadfile("Future/Initiate.lua")()
+                else
+                    loadstring(game:HttpGet('https://raw.githubusercontent.com/joeengo/Future/main/loadstring.lua', true))()
+                end
+            end)
+        end
+    end
+})
+GuiLibrary["LoadOnlyGuiConfig"]()
+
+local function keyconcat(t, join) 
+    local new = {} 
+    for i,v in next, t do new[#new+1] = i end
+    return table.concat(new, join) 
+end
+
+local function nameconcat(t, join) 
+    local new = {}
+    for i,v in next, t do new[#new+1] = v.Name end
+    return table.concat(new, join)
+end
+
+--commands
+local commands = {}
+commands.help = {Function = function(args) 
+    if #args == 1 and commands[args[1]:lower()] then
+        GuiLibrary.CreateNotification(commands[args[1]:lower()].Help:gsub("<", "&lt;"):gsub(">", "&gt;") or "Help has not been set for this command.")
+        return
+    end
+    local commandcount = 0
+    for i,v in next, commands do 
+        commandcount = commandcount + 1
+    end
+    GuiLibrary.CreateNotification("Commands ("..tostring(commandcount).."): "..keyconcat(commands, ", "))
+end, Help = ".help"}
+
+commands.friend = {
+    Function = function(args) 
+        local mode,plrname = args[1]:lower(), args[2]
+        if mode == "list" then 
+            local count = 0
+            for i,v in next, Future.Friends do 
+                count = count + 1
+            end
+            return GuiLibrary.CreateNotification("Friends ("..tostring(count).."): "..keyconcat(Future.Friends, ", "))
+        end
+
+        if not plrname then return end
+
+        if mode == "add" then
+            Future.addFriend(plrname:lower())
+        elseif mode == "del" or mode == "remove" or mode == "delete" then
+            if Future.Friends[plrname:lower()] then 
+                Future.delFriend(plrname:lower())
+            else
+                GuiLibrary.CreateNotification(plrname.." is not in your friends list!")
+            end
+        end
+
+        writefile("Future/Friends.json", HTTPSERVICE:JSONEncode(Future.Friends))
+    end,
+    Help = ".friend add/del/list <player-name>"
+}
+
+commands.toggle = {
+    Function = function(args) 
+        local module,state = args[1], args[2]
+        state= (state=="off" or state == "false") and false or (state == "on" or state == "true") and true or nil
+ 
+        if GuiLibrary.Objects[module.."OptionsButton"]~=nil then 
+            local api = GuiLibrary.Objects[module.."OptionsButton"].API
+            api.Toggle(state)
+        end
+    end,
+    Help = ".toggle <module-name> <state>"
+}
+
+commands.font = {
+    Function = function(args) 
+    
+        if args[1] == "list" then 
+            GuiLibrary.CreateNotification("List of avaliable fonts:\n"..nameconcat(Enum.Font:GetEnumItems(), ", "))
+            return
+        end
+
+        local fontname = args[1]:lower()
+        local font, oldfont = nil, GuiLibrary.Font
+        for i,v in next, Enum.Font:GetEnumItems() do 
+            if v.Name:lower() == fontname then 
+               font = v 
+            end
+        end
+
+        if not font then return end
+
+        GuiLibrary.Font = font
+
+        for i,v in next, GuiLibrary.ScreenGui:GetDescendants() do 
+            if pcall(function() return v.Font end) then 
+                v.Font = font
+            end
+        end
+
+        GuiLibrary["Signals"]["HUDUpdate"]:Fire()
+
+    end, 
+    Help = ".font <font-name>"
+}
+
+shared.Future.AddCommand = function(name, func) 
+    commands[name] = func
+end
+
+
+-- Calculate Speed, FPS and Coords
+local Coords, Speed, FPS = Vector3.new(), 0, 0
+local Tick = tick()
+local CurrentCharacterPositionConnection
+spawn(function()
+    local lastPos = Vector3.new()
+    repeat task.wait(1)
+
+        if isAlive() then 
+            lastPos = lastPos or lplr.Character.PrimaryPart.Position
+            local distance = (lastPos - lplr.Character.PrimaryPart.Position).Magnitude
+            local meters = distance / (25 / 7) --//there is 25 / 7 studs in a meter
+            Speed = meters * 3.6 --//meters per second to kmh
+            lastPos = lplr.Character.PrimaryPart.Position
+        else
+            Speed = 0
+        end
+
+    until shared.Future == nil
+end)
+
+BindToRenderStep("stats", function(dt) 
+    if Tick <= tick() then
+        FPS = math.round(1/dt)
+        if isAlive() then 
+            Coords = lplr.Character.PrimaryPart.Position
+        end
+        local ping = tonumber(game:GetService("Stats"):FindFirstChild("PerformanceStats").Ping:GetValue())
+        GuiLibrary["Signals"]["statsUpdate"]:Fire(Coords, math.round(Speed*100)/100, FPS, ping)
+        Tick = tick() + 0.1
+    end
+end)
+
+local ontp = game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+    if State == Enum.TeleportState.Started then
+		local stringtp = [[
+        repeat wait() until game:IsLoaded()
+        if shared.FutureDeveloper then 
+            loadfile("Future/Initiate.lua")() 
+        else 
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/joeengo/Future/main/Initiate.lua", true))() 
+        end
+        ]]
+		queueteleport(stringtp)
+    end
+end)
+
+
+local bedwarsidtable = {
+    6872274481,
+    8444591321,
+    8560631822
+}
+if table.find(bedwarsidtable, game.PlaceId) then 
+    shared.FuturePlaceId = 6872274481
+end
+local minerscaveidtable = {
+    7910558502,
+    6604417568,
+}
+if table.find(minerscaveidtable, game.PlaceId) then 
+    shared.FuturePlaceId = 6604417568
+end
+
+
+local success, _error = pcall(getscript, "Universal")
+local success2, _error2 = pcall(getscript)
+local success3, _error3 = pcall(getplusscript)
+local success4, _error4 = pcall(getcustomscripts)
+if success then 
+    print("[Future] Successfully retrieved Universal script!")
+else
+    fwarn("Unsuccessful attempt at retrieving Universal script!\n report this in the discord.\n (".._error..")")
+    GuiLibrary.Signals.onDestroy:Fire()
+    return
+end
+if success2 then 
+    print("[Future] Successfully retrieved Game script!")
+else
+    fwarn("Unsuccessful attempt at retrieving Game script!\n report this in the discord.\n (".._error2..")")
+    GuiLibrary.Signals.onDestroy:Fire()
+    return
+end
+if success3 then 
+    print("[Future] Successfully retrieved FuturePlus Game script!")
+else
+    fwarn("Unsuccessful attempt at retrieving FuturePlus Game script!\n (".._error3..")")
+    GuiLibrary.Signals.onDestroy:Fire()
+    return
+end
+if success4 then 
+    print("[Future] Successfully loaded all custom scripts!")
+else
+    fwarn("Unsuccessful attempt at loading custom scripts!\n (".._error4..")")
+    GuiLibrary.Signals.onDestroy:Fire()
+    return
+end
+
+
+GuiLibrary["LoadConfig"](GuiLibrary["CurrentConfig"])
+
+-- Future command system
+
+local oldtab
+local oldfunc
+local suc, res = pcall(function()
+    for i,v in next, getconnections(game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnNewMessage.OnClientEvent) do
+        if v.Function and #debug.getupvalues(v.Function) > 0 and type(debug.getupvalues(v.Function)[1]) == "table" and getmetatable(debug.getupvalues(v.Function)[1]) and getmetatable(debug.getupvalues(v.Function)[1]).GetChannel then
+            oldfunc = getmetatable(debug.getupvalues(v.Function)[1].ChatBar.CommandProcessor).ProcessCompletedChatMessage
+            oldtab = getmetatable(debug.getupvalues(v.Function)[1].ChatBar.CommandProcessor)
+            getmetatable(debug.getupvalues(v.Function)[1].ChatBar.CommandProcessor).ProcessCompletedChatMessage = function(self, message, chatwindow)
+                local res = oldfunc(self, message, chatwindow)
+                local oldident = getthreadidentityfunc() or 2
+                if message:sub(1,1) == "." then
+                    setthreadidentityfunc(8)
+                    local splitmessage = message:sub(2, #message):split(" ")
+                    if #splitmessage >= 1 and commands[splitmessage[1]:lower()] then
+                        local commandfunc = commands[splitmessage[1]:lower()].Function
+                        table.remove(splitmessage, 1)
+                        commandfunc(splitmessage)
+                    else
+                        GuiLibrary.CreateNotification("Unknown command.")
+                    end
+                    return true
+                end
+                setthreadidentityfunc(oldident)
+                return res
+            end
+        end
+    end
+end)
+if not suc then warn("[Future] Chat hook failed, aborting command system. \n(Error: "..res..")") end
+
+local leaving = PLAYERS.PlayerRemoving:connect(function(player)
+    if player == lplr then
+        GuiLibrary["SaveConfig"](GuiLibrary["CurrentConfig"])
+    end
+end)
+
+GuiLibrary.Signals.onDestroy:connect(function()
+    oldtab.ProcessCompletedChatMessage = oldfunc
+    shared.Future.Destructing = true
+    writefile("Future/configs/!SelectedConfigs/"..tostring(shared.FuturePlaceId)..".txt", GuiLibrary.CurrentConfig) 
+    UnbindFromRenderStep("stats")
+    for i,v in next, GuiLibrary.Objects do 
+        if v.Type == "OptionsButton" and i ~= "DestructOptionsButton" and v.API.Enabled then 
+            v.API.Toggle(false)
+        end
+    end
+    if ontp then ontp:Disconnect() end
+    if leaving then leaving:Disconnect() end
+    shared.Future = nil
+end)
+
+spawn(function()
+    if GuiLibrary["AllowNotifications"] then
+        local textlabel = Instance.new("TextLabel")
+        textlabel.Size = UDim2.new(1, 0, 0, 36)
+        textlabel.RichText = true
+        textlabel.Text = [[<stroke thickness="2">Please join the Future discord server for updates and to leave feedback. discord.gg/bdjT5UmmDJ</stroke>]]
+        textlabel.BackgroundTransparency = 1
+        textlabel.TextStrokeTransparency = 0
+        textlabel.TextSize = 25
+        textlabel.Font = GuiLibrary.Font
+        textlabel.TextColor3 = Color3.new(1, 1, 1)
+        textlabel.Position = UDim2.new(0, 0, 0, -40)
+        textlabel.Parent = GuiLibrary["ScreenGui"]
+        local textlabel2 = Instance.new("TextLabel")
+        textlabel2.Size = UDim2.new(1, 0, 0, 36)
+        textlabel2.RichText = true
+        textlabel2.Text = [[<stroke thickness="2">Always use alts when exploiting.</stroke>]]
+        textlabel2.BackgroundTransparency = 1
+        textlabel2.TextStrokeTransparency = 0
+        textlabel2.TextSize = 25
+        textlabel2.Font = GuiLibrary.Font
+        textlabel2.TextColor3 = Color3.new(1, 1, 1)
+        textlabel2.Position = UDim2.new(0, 0, 0, -20)
+        textlabel2.Parent = GuiLibrary["ScreenGui"]
+        task.wait(7.5)
+        textlabel:Destroy()
+        textlabel2:Destroy()
+    end
+end)
+
+spawn(function()
+    repeat
+        if not shared.Future or shared.Future.Destructing then 
+            break
+        end
+        for i = 1, 100 do 
+            task.wait(0.02)
+            if not shared.Future or shared.Future.Destructing then 
+                break
+            end
+        end
+        GuiLibrary["SaveConfig"](GuiLibrary["CurrentConfig"], true)
+    until not shared.Future
+end)
+fprint("Finished loading in "..tostring(math.floor((game:GetService("Workspace"):GetServerTimeNow() - startTime) * 1000) / 1000).."s\nPress "..GuiLibrary["GuiKeybind"].." to open the Gui.\nPlease join the discord for changelogs and to report bugs. \ndiscord.gg/bdjT5UmmDJ\nEnjoy using Future v"..shared._FUTUREVERSION.."")
+shared._FUTURECACHED = true
+end
+}
+
+Tab:Button{
+	Name = "Button",
+	Description = nil,
+	Callback = function()
+   local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("HomerWare Hub", "BloodTheme")
+
+--Main
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+
+MainSection:NewButton("Marine Hub", "OP Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Hypious/Marine-Hub/main/Main"))()
+end)
+
+MainSection:NewButton("VG HUB", "Good For Simulator And fps GAMES 110+ Games", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+end)
+
+MainSection:NewButton("Fnf Script", "Best Fnf Script Ever", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/wally-rblx/funky-friday-autoplay/main/main.lua",true))()
+end)
+
+MainSection:NewButton("Piano v7", "Auto Piano V7 Needs Key", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/JxcExploit/LOLKIDDO/main/AutoPlayPianoV7'))()
+end)
+
+MainSection:NewButton("Doors Script V1", "Best Needs Key", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Doors/Script.lua"))()
+end)
+
+MainSection:NewButton("Doors Script v2", "Worse than v1 but keyless", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/OminousVibes-Exploit/Scripts/main/doors/main.lua"))()
+end)
+
+MainSection:NewButton("Infinity Yeild", "Best Admin Commands", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+MainSection:NewButton("Ultra Hub", "Psx Strongman Simulator ETC", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ZaRdoOx/Ultra-Hub/main/Main"))()
+end)
+
+MainSection:NewButton("Proxima HUB", "One Of The Best Hubs In The World", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/TrixAde/Proxima-Hub/main/Main.lua"))()
+end)
+
+MainSection:NewButton("Rebirth Champions X ", "INSANELY OP", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KrystekYTpv/Scripts/main/RebirthChampionsX.lua", true))()
+end)
+
+
+local Bedwars = Window:NewTab("Bedwars")
+local BedwarsSection = Bedwars:NewSection("Bedwars Scripts")
+
+
+BedwarsSection:NewButton("RektSky", "Op With Vape v4", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/8pmX8/rektsky4roblox/main/mainscript.lua"))()
+end)
+
+BedwarsSection:NewButton("Ape V6", "Vape v4 remastered", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Fazedrab/ApeV6ForRoblox/main/NewMainScript.lua", true))()
+end)
+
+BedwarsSection:NewButton("Sape", "why u here get out", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/vodxn/sape/main/Initiate.lua"))()
+end)
+
+BedwarsSection:NewButton("Engoware", "Idk what to say", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/joeengo/engoware/main/Main.lua"))()
+end)
+
+BedwarsSection:NewButton("vape v4", "Main vape v4", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+end)
+
+
+local Misc  = Window:NewTab("Misc")
+local MiscSection = Misc:NewSection("Misc Scripts")
+
+MiscSection:NewSlider("Speed", "SuperIdolSonic", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+MiscSection:NewSlider("HighJump", "SuperIdolSonic", 5000, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+
+local Universal  = Window:NewTab("Universal")
+local UniversalSection = Universal:NewSection("Universal Scripts")
+
+UniversalSection:NewButton("Animation Changer", "Changes ur animation Not FE", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/ShiroSeby/Seby-s-Lair/main/R15%20Animation%20Changer'), true))()
+end)
+
+UniversalSection:NewButton("FPS BOOSTER", "Boost FPS", function()
+-- Made by RIP#6666
+_G.Settings = {
+    Players = {
+        ["Ignore Me"] = true, -- Ignore your Character
+        ["Ignore Others"] = true -- Ignore other Characters
+    },
+    Meshes = {
+        Destroy = false, -- Destroy Meshes
+        LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
+    },
+    Images = {
+        Invisible = true, -- Invisible Images
+        LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
+        Destroy = false, -- Destroy Images
+    },
+    Other = {
+        ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
+        ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
+        ["No Explosions"] = true, -- Makes Explosion's invisible
+        ["No Clothes"] = true, -- Removes Clothing from the game
+        ["Low Water Graphics"] = true, -- Removes Water Quality
+        ["No Shadows"] = true, -- Remove Shadows
+        ["Low Rendering"] = true, -- Lower Rendering
+        ["Low Quality Parts"] = true -- Lower quality parts
+    }
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
+end)
+
+UniversalSection:NewButton("Auto Grammar", "Idk Why U Need This But Its Cool IG?", function()
+    shared.CustomCorrections = {
+        ["examplething12"] = "hello" -- if you say "examplething12" it will become hello
+    }
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/eosuwu/boblox/main/autogremer.lua"))()
+end)
+
+UniversalSection:NewButton("Universal Hub", "One Of The Best UIS I Have ever Seen", function()
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/snapshot.lua"))()
+end)
+
+
+local Credits = Window:NewTab("Credits")
+local CreditsSection = Credits:NewSection("Credits")
+
+CreditsSection:NewTextBox("Not_zentical#4847", "No One Else Except the script owners", function(txt)
+	print(txt)
+end)
+
+
+local Setting = Window:NewTab("Setting")
+local SettingSection = Setting:NewSection("Setting")
+
+SettingSection:NewKeybind("Toggle UI", "Close/Open UI", Enum.KeyCode.BackSlash, function()
+	Library:ToggleUI()
+end)
+
+MainSection:NewButton("Smox Hub", "OP HUB!", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SmoxHub/SmoxHub/main/Word%20Bomb"))()
+end)
+
+MainSection:NewButton("Murder Mystery 2", "OP", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Ethanoj1/EclipseMM2/master/Script", true))()
+end)
+
+MainSection:NewButton("Kat OP GUI", "What To Say Uhm Hi", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/6rd91GZx", true))()
+end)
+
+MainSection:NewButton("Owl Hub", "Im a Owl", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+end)
+
+MainSection:NewButton("Combat Warriors", "I Can combo in minecraft :(", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SpiritXmas/Project-Hook/main/required.lua"))()
+end)       
+          end
+}
+      end
+  end
+OrionLib:Destroy()
+else
+      Tab:AddLabel("Key = WRONG!")
+      end
+  OrionLib:Init()
